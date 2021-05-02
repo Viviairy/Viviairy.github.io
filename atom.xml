@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Viviairy.github.io/</id>
-    <title>Gridea</title>
-    <updated>2021-05-02T09:02:07.005Z</updated>
+    <title>Vivi的博客</title>
+    <updated>2021-05-02T09:16:58.847Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Viviairy.github.io/"/>
     <link rel="self" href="https://Viviairy.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>vivi</subtitle>
     <logo>https://Viviairy.github.io/images/avatar.png</logo>
     <icon>https://Viviairy.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Gridea</rights>
+    <rights>All rights reserved 2021, Vivi的博客</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://Viviairy.github.io/post/hello-gridea/</id>
