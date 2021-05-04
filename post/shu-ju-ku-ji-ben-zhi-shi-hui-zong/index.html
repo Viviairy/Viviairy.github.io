@@ -1,22 +1,103 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://Viviairy.github.io</id>
-    <title>Vivi的博客</title>
-    <updated>2021-05-04T15:57:50.838Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://Viviairy.github.io"/>
-    <link rel="self" href="https://Viviairy.github.io/atom.xml"/>
-    <subtitle>vivi</subtitle>
-    <logo>https://Viviairy.github.io/images/avatar.png</logo>
-    <icon>https://Viviairy.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Vivi的博客</rights>
-    <entry>
-        <title type="html"><![CDATA[通俗易懂数据库 | 概念篇]]></title>
-        <id>https://Viviairy.github.io/post/shu-ju-ku-ji-ben-zhi-shi-hui-zong/</id>
-        <link href="https://Viviairy.github.io/post/shu-ju-ku-ji-ben-zhi-shi-hui-zong/">
-        </link>
-        <updated>2021-05-04T09:00:36.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>通俗易懂数据库 | 概念篇 | Vivi的博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1620143867345">
+<link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+我们经常会听到数据库这个词，具体什么时候会用到数据库呢？
+教材一般会用最常见的学生学籍管理系统、教务管理系统举例子，除此之外课程设计选题还有图书借阅管理系统、人事管理系统之类。任何一个多用户的应用背后都有强大的数据库系统支持。
+我的这个博..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Viviairy.github.io">
+        <img src="https://Viviairy.github.io/images/avatar.png?v=1620143867345" class="site-logo">
+        <h1 class="site-title">Vivi的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      vivi
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Viviairy.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">通俗易懂数据库 | 概念篇</h2>
+            <div class="post-date">2021-05-04</div>
+            
+            <div class="post-content" v-pre>
+              <blockquote>
 <p>我们经常会听到数据库这个词，具体什么时候会用到数据库呢？<br>
 教材一般会用最常见的学生学籍管理系统、教务管理系统举例子，除此之外课程设计选题还有图书借阅管理系统、人事管理系统之类。任何一个多用户的应用背后都有强大的数据库系统支持。<br>
 我的这个博客是一个静态的网页，除我之外其他用户都只能浏览文章，不能进行其他交互操作，页面相关的数据都存储在我本地，没有涉及到数据库。 但如果我在CSDN网站发表这篇文章, 大家除了从我主页浏览到网站之外，还可以登录自己的账号进行收藏、评论、点赞等操作，这里CSDN就是一个动态的网页，可以有大量不同的用户，需要很多动态交互信息，这时候就需要数据库来存储用户数据。<br>
@@ -179,6 +260,37 @@ E-R图表示了实体型（矩形）、属性（椭圆）和联系（菱形）�
 <p>封锁<br>
 封锁协议<br>
 并发控制</p>
-]]></content>
-    </entry>
-</feed>
+
+            </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
