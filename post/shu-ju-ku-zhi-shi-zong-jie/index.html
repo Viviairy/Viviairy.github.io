@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>数据库知识总结 | Vivi的博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Viviairy.github.io//favicon.ico?v=1620114148849">
+<link rel="stylesheet" href="https://Viviairy.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="首先理解四个基本概念
+
+数据（Date）
+
+
+数据是描述事物的记录。数据和语义是不可分的，也就是说，给出数据的时候解释数据的意义，比如说小明某数据18，这个18是代表年龄还是尺寸呢
+数据的形式可以是多种多样的，除了文字、数字还有图形、音频、..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Viviairy.github.io/">
+        <img src="https://Viviairy.github.io//images/avatar.png?v=1620114148849" class="site-logo">
+        <h1 class="site-title">Vivi的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      vivi
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Viviairy.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">数据库知识总结</h2>
+            <div class="post-date">2021-05-04</div>
+            
+            <div class="post-content" v-pre>
+              <h4 id="首先理解四个基本概念">首先理解四个基本概念</h4>
+<ol>
+<li>数据（Date）</li>
+</ol>
+<ul>
+<li>数据是描述事物的记录。数据和语义是不可分的，也就是说，给出数据的时候解释数据的意义，比如说小明某数据18，这个18是代表年龄还是尺寸呢</li>
+<li>数据的形式可以是多种多样的，除了文字、数字还有图形、音频、视频等等，它们都可以经过数字化后存入计算机</li>
+</ul>
+<ol start="2">
+<li>数据库（DateBase , DB）</li>
+</ol>
+<ul>
+<li>即为用于存储数据的仓库</li>
+<li>长期存储在计算机内、有组织、可共享的大量数据集合，这个也是数据库的基本特征</li>
+</ul>
+<ol start="3">
+<li>数据库管理系统（DateBase Management System,DBMS）</li>
+</ol>
+<ul>
+<li>位于用户和操作系统之间的一层数据管理软件</li>
+</ul>
+<ol start="4">
+<li>数据库系统（DateBase System,DBS）</li>
+</ol>
+<ul>
+<li>就是一个使用、管理、存储数据的系统，包括数据库、硬件、软件、人员<br>
+<img src="https://Viviairy.github.io//post-images/1620114117271.png" alt="" loading="lazy"></li>
+</ul>
+<blockquote>
+<p>构建数据库其实就是一个建模的过程。</p>
+<p>首先要将现实世界抽象为信息世界 (构建概念模型) , 然后将信息世界转化为可以被计算机理解的机器世界(构建逻辑模型/物理模型)</p>
+</blockquote>
+<h4 id="概念模型">概念模型</h4>
+<ol>
+<li>
+<p>实体（entity）</p>
+<ul>
+<li>可以是具体的人事物，也可以看作是一个概念，比如说lol英雄</li>
+</ul>
+</li>
+<li>
+<p>属性（attribute）</p>
+<ul>
+<li>属性就是实体所具有的特性，一个实体可以用若干属性来刻画</li>
+<li>lol英雄实体可以由名称、性别、英雄定位、生命值、法力值等属性组合</li>
+<li>这时属性集合（九尾狐妖，女，法师，526，418）代表了这一个lol英雄</li>
+</ul>
+</li>
+<li>
+<p>码（key）</p>
+<ul>
+<li>可以唯一标识的属性集合</li>
+<li>例如名称可以是lol英雄实体的码，但是如果是HDU学生实体，就不能用姓名作为码因为学生很多可能重名，这时候就需要学号作为学生实体的码</li>
+</ul>
+</li>
+<li>
+<p>实体型（entity type）</p>
+<ul>
+<li>就是实体名+属性名集合</li>
+<li>例如：lol英雄（名称、性别、英雄定位、生命值、法力值）</li>
+</ul>
+</li>
+<li>
+<p>实体集（entity set）</p>
+<ul>
+<li>同一类型实体的集合，例如全体英雄</li>
+</ul>
+</li>
+<li>
+<p>联系（relationship）</p>
+<ul>
+<li>可以先理解现实世界中各个实体之间存在的关系</li>
+<li>实体之间的联系可以是一对一（比如正常情况的男女朋友交往），一对多（比如说lol账号和账号下拥有的lol英雄），多对多（比如玩家和游戏）</li>
+</ul>
+</li>
+</ol>
+<p>概念模型通常用<strong>E-R图</strong>来标识实体关系</p>
+<h4 id="数据模型之关系模型的理解">数据模型之关系模型的理解</h4>
+
+            </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
