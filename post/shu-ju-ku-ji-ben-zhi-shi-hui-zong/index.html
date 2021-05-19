@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" >
 
-<title>通俗易懂数据库 | 概念篇 | Vivi的博客</title>
+<title>数据库系统概述① | Vivi的博客</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1620144201873">
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1621403042418">
 <link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
 
 
@@ -19,9 +19,15 @@
 
 
     <meta name="description" content="
-我们经常会听到数据库这个词，具体什么时候会用到数据库呢？
-教材一般会用最常见的学生学籍管理系统、教务管理系统举例子，除此之外课程设计选题还有图书借阅管理系统、人事管理系统之类。任何一个多用户的应用背后都有强大的数据库系统支持。
-我的这个博..." />
+这篇博客将会带你系统地梳理清楚数据库相关的基础知识。
+参考教材为高等教育出版社出版的《数据库系统概述（第5版）》
+
+开始之前现先来理解一下最最基本的四个概念
+
+数据（Date）
+
+数据是描述事物的记录。
+数据和语义是不可分的，也就是说，给..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -31,7 +37,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://Viviairy.github.io">
-        <img src="https://Viviairy.github.io/images/avatar.png?v=1620144201873" class="site-logo">
+        <img src="https://Viviairy.github.io/images/avatar.png?v=1621403042418" class="site-logo">
         <h1 class="site-title">Vivi的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -93,17 +99,15 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">通俗易懂数据库 | 概念篇</h2>
+            <h2 class="post-title">数据库系统概述①</h2>
             <div class="post-date">2021-05-04</div>
             
             <div class="post-content" v-pre>
               <blockquote>
-<p>我们经常会听到数据库这个词，具体什么时候会用到数据库呢？<br>
-教材一般会用最常见的学生学籍管理系统、教务管理系统举例子，除此之外课程设计选题还有图书借阅管理系统、人事管理系统之类。任何一个多用户的应用背后都有强大的数据库系统支持。<br>
-我的这个博客是一个静态的网页，除我之外其他用户都只能浏览文章，不能进行其他交互操作，页面相关的数据都存储在我本地，没有涉及到数据库。 但如果我在CSDN网站发表这篇文章, 大家除了从我主页浏览到网站之外，还可以登录自己的账号进行收藏、评论、点赞等操作，这里CSDN就是一个动态的网页，可以有大量不同的用户，需要很多动态交互信息，这时候就需要数据库来存储用户数据。<br>
-这篇博客会带你系统地梳理清楚数据库相关的概念。</p>
+<p>这篇博客将会带你系统地梳理清楚数据库相关的基础知识。<br>
+参考教材为高等教育出版社出版的《数据库系统概述（第5版）》</p>
 </blockquote>
-<p>开始之前现先来理解一下最最基本的几个概念</p>
+<p>开始之前现先来理解一下最最基本的四个概念</p>
 <ul>
 <li><strong>数据（Date）</strong>
 <ul>
@@ -121,7 +125,7 @@
 <li><strong>数据库管理系统（DateBase Management System,DBMS）</strong>
 <ul>
 <li>即为位于用户和操作系统之间的一层数据管理软件</li>
-<li>常见的有AB的MySQL，微软的SQL Server，甲骨文的Oracle等，感兴趣的自行慢慢了解</li>
+<li>常见的有AB的MySQL，微软的SQL Server，甲骨文的Oracle等</li>
 </ul>
 </li>
 <li><strong>数据库系统（DateBaseSystem,DBS）</strong>
@@ -139,7 +143,8 @@
 2）再把概念模型转换到计算机上某一DBMS支持的<strong>数据模型</strong>。</p>
 </blockquote>
 <h1 id="概念模型">概念模型</h1>
-<p>所谓的概念模型就是从现实世界抽象出来的信息结构，相关的概念很多但也很好理解</p>
+<p>所谓的概念模型就是从现实世界抽象出来的信息结构</p>
+<h2 id="概念模型相关概念">概念模型相关概念</h2>
 <ol>
 <li>实体（entity）
 <ul>
@@ -183,13 +188,12 @@
 E-R图表示了实体型（矩形）、属性（椭圆）和联系（菱形），<br>
 看下面这个栗子就明白了<br>
 <img src="https://Viviairy.github.io/post-images/1620118890244.png" alt="" loading="lazy"></p>
-<h1 id="关系数据库">关系数据库</h1>
-<p>顾名思义就是支持<strong>关系模式</strong>的数据库系统。<br>
-首先关系模型是数据模型的一种，所谓<strong>数据模型</strong>是用来描述数据、组织数据和用来对数据进行操作的。数据库常见的数据模型有层次模型（树形结构）、网状模型、关系模型等，前两种已经基本被淘汰了 ,不多做介绍感兴趣的自己去了解吧。<br>
-关系模式由  A 关系数据结构、B 关系操作集合和 C 关系完整性约束三部分组成，接下来会展开介绍</p>
-<h2 id="a-关系数据结构">A 关系数据结构</h2>
-<p>一句话概括讲清楚关系模式就是：用<strong>表</strong>来表示关系，<br>
-以下是关系模型的一些术语：</p>
+<h1 id="关系模型">关系模型</h1>
+<ul>
+<li>关系模型是<strong>数据模型</strong>的一种。 所谓<strong>数据模型</strong>是数据库的核心和基础，是用来描述数据、组织数据和用来对数据进行操作的模型。数据库常见的数据模型有层次模型（树形结构）、网状模型、关系模型等，前两种已经基本被淘汰不多做介绍。</li>
+<li><strong>关系数据库</strong>就是采用<strong>关系模型</strong>作为数据组织方式的数据库系统。</li>
+<li>以下是关系模型涉及到的一些术语：</li>
+</ul>
 <ol>
 <li>关系（relation）
 <ul>
@@ -209,7 +213,9 @@ E-R图表示了实体型（矩形）、属性（椭圆）和联系（菱形）�
 </li>
 <li>码 （key）
 <ul>
-<li>相关的概念还有主码、外码、候选码，之后再解释</li>
+<li>候选码：<br>
+如果一个属性组的值能唯一标识元组，其子集不能</li>
+<li>主码</li>
 </ul>
 </li>
 <li>域（domain）
@@ -217,15 +223,49 @@ E-R图表示了实体型（矩形）、属性（椭圆）和联系（菱形）�
 <li>属性的取值范围来自某个域，比如性别的域一般来说就是（男，女）</li>
 </ul>
 </li>
-<li>分量：元组中的一个属性值<br>
-关系模式要求是必须规范化，涉及规范化问题在后面会介绍</li>
+<li>分量：元组中的一个属性值</li>
 </ol>
+<ul>
+<li>下面会从  A 关系数据结构、B 关系操作集合和 C 关系完整性约束 三部分组成展开讲解关系模型</li>
+</ul>
+<h2 id="a-关系数据结构">A 关系数据结构</h2>
+<p>关系模式的数据结构只包含单一的数据结构——关系。<br>
+在用户看来关系模式数据的逻辑结构是<strong>一张扁平的二维表</strong>。<br>
+关系模型是建立在<strong>集合代数</strong>基础上的</p>
 <h2 id="b-关系操作集合">B 关系操作集合</h2>
-<p>基本关系操作包括<br>
-1）查询操作<br>
-查询操作分为选择、投影、连接、除、差、并、交、笛卡尔积<br>
-2）增删改操作<br>
-关系操作涉及到的关系数据库标准语言SQL会下一篇博客详细介绍。</p>
+<p>基本关系操作包括<strong>查询</strong>和<strong>增删改</strong></p>
+<h3 id="1查询操作">1）查询操作</h3>
+<p>基于关系代数查询操作分<br>
+<strong>传统关系运算</strong></p>
+<ol>
+<li>并（union）</li>
+<li>差（excpet）</li>
+<li>交（intersection）</li>
+<li>笛卡尔积（cartesian product）<br>
+<strong>专门的关系运算</strong></li>
+<li>选择（select）
+<ul>
+<li>就是限制，针对元组，行运算</li>
+</ul>
+</li>
+<li>投影（projection）
+<ul>
+<li>选择若干属性列组成新关系，列运算</li>
+</ul>
+</li>
+<li>连接（jion）
+<ul>
+<li>从两个关系的笛卡尔积+选择</li>
+</ul>
+</li>
+<li>除运算（division）
+<ul>
+<li>这是一个难点</li>
+</ul>
+</li>
+</ol>
+<h3 id="2增删改操作">2）增删改操作</h3>
+<p>关系操作涉及到的关系数据库标准语言SQL会下一篇博客详细介绍。</p>
 <h2 id="c-数据完整性约束">C 数据完整性约束</h2>
 <p>数据完整性就是指数据的正确性和相容性（符合逻辑），又分为实体完整性、参照完整性、用户自定义完整性</p>
 <ol>

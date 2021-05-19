@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Viviairy.github.io</id>
     <title>Vivi的博客</title>
-    <updated>2021-05-04T16:03:26.363Z</updated>
+    <updated>2021-05-19T05:44:05.152Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Viviairy.github.io"/>
     <link rel="self" href="https://Viviairy.github.io/atom.xml"/>
@@ -11,18 +11,247 @@
     <icon>https://Viviairy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Vivi的博客</rights>
     <entry>
-        <title type="html"><![CDATA[通俗易懂数据库 | 概念篇]]></title>
+        <title type="html"><![CDATA[Markdown常用语法]]></title>
+        <id>https://Viviairy.github.io/post/markdown-chang-yong-yu-fa/</id>
+        <link href="https://Viviairy.github.io/post/markdown-chang-yong-yu-fa/">
+        </link>
+        <updated>2021-05-19T03:08:10.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>就是总结一下常用的语法<br>
+参考链接<a href="https://www.jianshu.com/p/399e5a3c7cc5%22.MD%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8%22">简书</a></p>
+</blockquote>
+<h3 id="标题">标题</h3>
+<p>文字前面带几个#号，共有h1-h6六个级别<br>
+h1下面会有一条横线</p>
+<h3 id="列表">列表</h3>
+<p>无序列表：文字前面加 + - * 三者中任意一个<br>
+有序列表：文字前面加 数字和点号<br>
+列表嵌套，使用tab 或 空格 缩进控制列表的层数</p>
+<p>###引用说明区块<br>
+在文字前面加&gt;即可，可以多加几个&gt;嵌套</p>
+<p>###引用说明区块<br>
+在文字前面加&gt;即可，可以多加几个&gt;嵌套</p>
+<p>###代码块<br>
+单行代码前后分别用`  括起来<br>
+多行代码前后分别用``` 括起来<br>
+注意是左上角~标志</p>
+<p>###链接<br>
+用<code>[文字](链接 &quot;描述&quot; )</code><br>
+或者<code>[文字]：链接 &quot;描述&quot;</code></p>
+<p>###分割线<br>
+由于至少连续3个 * 或 - 或  _ 符号表示</p>
+<p>###文字<br>
+加粗：文字前后分别用*或_括起来<br>
+倾斜：文字前后分别用**或__括起来<br>
+删除：文字前后分别用~~括起来</p>
+<p>###表格</p>
+<pre><code>123|234|345
+:-|:-:|-:
+abc|bcd|cde
+abc|bcd|cde
+abc|bcd|cde
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">123</th>
+<th style="text-align:center">234</th>
+<th style="text-align:right">345</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">abc</td>
+<td style="text-align:center">bcd</td>
+<td style="text-align:right">cde</td>
+</tr>
+<tr>
+<td style="text-align:left">abc</td>
+<td style="text-align:center">bcd</td>
+<td style="text-align:right">cde</td>
+</tr>
+<tr>
+<td style="text-align:left">abc</td>
+<td style="text-align:center">bcd</td>
+<td style="text-align:right">cde</td>
+</tr>
+</tbody>
+</table>
+<p>三列分别为左对齐，居中，右对齐</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux常用指令 Shell]]></title>
+        <id>https://Viviairy.github.io/post/linux-shell/</id>
+        <link href="https://Viviairy.github.io/post/linux-shell/">
+        </link>
+        <updated>2021-05-19T02:03:22.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>照着菜鸟教程学就可以，这篇的话是搬运工<br>
+🔗https://www.runoob.com/linux/linux-tutorial.html</p>
+</blockquote>
+<p>Linux 一般作为服务器使用，而服务器一般放在机房，我们通过远程登录到Linux服务器来管理维护系统。<br>
+Linux 系统中是通过 ssh 服务实现的远程登录功能，默认 ssh 服务端口号为 22。<br>
+这里使用到的是XShell本地客户端，远程连接centOS7.5系统</p>
+<h2 id=""></h2>
+<p>shutdown 会给系统计划一个时间关机。它可以被用于停止、关机、重启机器。shutdown 会给系统计划一个时间关机。它可以被用于停止、关机、重启机器。</p>
+<h1 id="shutdown-p-now-关闭机器">shutdown -p now  ### 关闭机器</h1>
+<h1 id="shutdown-h-now-停止机器">shutdown -H now  ### 停止机器</h1>
+<h1 id="shutdown-r-0935-在-0935am-重启机器">shutdown -r 09:35 ### 在 09:35am 重启机器</h1>
+<p>要取消即将进行的关机，只要输入下面的命令：</p>
+<h1 id="shutdown-c">shutdown -c</h1>
+<p>halt 命令通知硬件来停止所有的 CPU 功能，但是仍然保持通电。你可以用它使系统处于低层维护状态。注意在有些情况会它会完全关闭系统。</p>
+<h1 id="halt-停止机器">halt             ### 停止机器</h1>
+<h1 id="halt-p-关闭机器-关闭电源">halt -p          ### 关闭机器、关闭电源</h1>
+<h1 id="halt-reboot-重启机器">halt --reboot    ### 重启机器</h1>
+<p>poweroff 会发送一个 ACPI 信号来通知系统关机。</p>
+<h1 id="poweroff-关闭机器-关闭电源">poweroff           ### 关闭机器、关闭电源</h1>
+<h1 id="poweroff-halt-停止机器">poweroff --halt    ### 停止机器</h1>
+<h1 id="poweroff-reboot-重启机器">poweroff --reboot  ### 重启机器</h1>
+<p>reboot 命令 reboot 通知系统重启。</p>
+<h1 id="reboot-重启机器">reboot           ### 重启机器</h1>
+<h1 id="reboot-halt-停止机器">reboot --halt    ### 停止机器</h1>
+<h1 id="reboot-p-关闭机器">reboot -p        ### 关闭机器</h1>
+<h3 id="xshell命令行">XShell命令行</h3>
+<ul>
+<li>
+<p>cd  去到想去的地方</p>
+<ul>
+<li>cd ..    (  英文的 点点 .. 是去到上一层  )</li>
+<li>cd public （ 进入当前文件夹的public 文件夹下 ）</li>
+<li>cd ~ ( ~ 根目录的意思   回到根目录     )</li>
+</ul>
+</li>
+<li>
+<p>ls  列出当前文件夹下的所有文件及文件夹</p>
+<ul>
+<li>ls -ahl  (-ahl 修饰符是显示完整点的，而且还是一竖排的，看着比较直观)</li>
+</ul>
+</li>
+<li>
+<p>pwd   显示当前所在的文件夹路径</p>
+</li>
+<li>
+<p>mkdir  新建文件夹</p>
+<ul>
+<li>mkdir test     在当前文件夹下新建 test文件夹 ）</li>
+</ul>
+</li>
+<li>
+<p>cp     复制文件或文件夹</p>
+<ul>
+<li>cp flie.txt flie2.txt      把file.txt文件复制为新文件file2.txt</li>
+<li>cp file.txt /root/test/      把文件file.txt从当前目录复制到/root/test/目录下</li>
+<li>cp * /root/test/      把当前目录下的所有未隐藏文件复制到/root/test/目录下</li>
+<li>cp -a flie flie.bak      递归性地把当前目录下的flie目录复制为新目录<br>
+(flie.bak,保持文件属性，并复制所有的文件，包括以句点开头的隐藏文件。为了方便起见，-a选项包含-R选项 )</li>
+<li>cp -i                         在覆盖前询问用户 cp -v 告诉用户正在做什么</li>
+</ul>
+</li>
+<li>
+<p>rm     删除文件或文件夹  如果是文件 就带文件后缀名</p>
+<ul>
+<li>rm * 删除当前目录下的所有文件（未隐藏文件）。</li>
+<li>rm命令不删除目录，除非也指定了-r(递归)参数。</li>
+<li>rm -rf domed 删除domed目录以及它所包含的所有内容</li>
+<li>rm -i a* 删除当前目录下所有以字母a开头的文件，并且在每次删除时，提示用户进行确认</li>
+</ul>
+</li>
+<li>
+<p>mv      移动文件</p>
+<ul>
+<li>mv aa.txt public     把 aa.txt 移动到当前目录下的 public文件夹下</li>
+<li>mv aa.txt ~/root       把 aa.txt 移动到根目录下的 root 文件夹下</li>
+</ul>
+</li>
+<li>
+<p>vim  用vim编辑器打开某个文件 （vim aa.txt）</p>
+<ul>
+<li>vim 编辑器下  先按 ESC 然后 键入 大写的 ZZ 保存改动并退出</li>
+<li>vim 编辑器下  先按 ESC 然后 键入 :q   不 保存改动并退出</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[产品原型绘制 Axure9使用]]></title>
+        <id>https://Viviairy.github.io/post/yan-fa-xiang-chan-pin-xiao-bai-hui-yong-axure9-liao-ma/</id>
+        <link href="https://Viviairy.github.io/post/yan-fa-xiang-chan-pin-xiao-bai-hui-yong-axure9-liao-ma/">
+        </link>
+        <updated>2021-05-06T06:00:22.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<ul>
+<li>把软件比喻成别墅，画原型图这一步就相当于盖别墅之前画个设计图做个小模型，具体装修风格交给专业的UI设计师，然后是程序猿负完完整整责盖好。</li>
+<li>Axure 我是一边用一边学的, 先按自己的想法做，碰到不会的时候搜一下，基本就在疯狂百度“Axure9什么功能怎么实现&quot;，多看几个博客试试看不同的方法，然后按自己的思路瞎摸索一下，找个最优解，在这里记录一下用到技巧。</li>
+</ul>
+</blockquote>
+<p>画原型首先是页面绘制，这一步很像是拼乐高，从元件库拖基本元件出来组装一下就完事，得注意一下公司给的文字规范、颜色规范、按钮规范、栅格栏间隔规范之类。<br>
+要实现交互有个很关键的元件叫做<strong>动态面板</strong>，这个面板可以添加不同的状态（state），可以分别在各个状态下绘制不同的东西，比如说，点一下选项局部页面变了、点了下按钮跳出来的一个弹窗、移动一下鼠标图案变化，原型中诸如此类的效果都是用动态面板再添加交互实现的。</p>
+<p>###点击选项改变面板状态</p>
+<p><strong>实现效果：</strong><br>
+页面内有n个选项tab a, b...n控制面板对应的n个状态state A,B...N；<br>
+选项是n选一的，选中选项为蓝色未选中为灰色；<br>
+点进页面之后候默认是处选中a, 面板状态为A, 点击选项实现面板状态切换。<br>
+<strong>使用元件：</strong> 按钮+动态面板<br>
+<strong>实现步骤：</strong></p>
+<ul>
+<li>选中多个选项，先统一设计选项按钮交互形状颜色交互样式；</li>
+<li>选中单个选项按钮 tab a，新建交互，选择触发事件（如单点时），添加动作：
+<ul>
+<li>设置面板状态,【面板】 到【state A】；</li>
+<li>设置选中,【tab a】 为 【真】，【tab b】等其他元件全部为【假】</li>
+</ul>
+</li>
+<li>默认选中面板State A对应tab a， 选项按钮形状属性 - 展示全部 - 【选中】打√；</li>
+</ul>
+<h3 id="鼠标移动改变面板状态">鼠标移动改变面板状态</h3>
+<p><strong>实现效果：</strong><br>
+默认显示状态1；<br>
+鼠标处于面板内时候面板状态变为状态2；<br>
+**使用元件：<strong>动态面板<br>
+** 实现步骤：</strong></p>
+<ul>
+<li>面板添加鼠标滑动时交互</li>
+<li>state1面板设置鼠标移入面板变为state2；state2面板设置鼠标移出面板变回state1；</li>
+<li>将面板内所有元件组合再添加交互能解决鼠标移动面板状态闪动问题；</li>
+</ul>
+<h3 id="关联两个下拉列表">关联两个下拉列表</h3>
+<p><strong>实现效果：</strong><br>
+有两个下拉列表相互关联，<br>
+下拉列表1选中A选项时候，下拉列表2内选项为a1、a2、a3；<br>
+下拉列表1选中B选项时候，下拉列表2内选项变为b1、b2、b3；<br>
+诸如此类<br>
+**使用元件：**动态面板<br>
+<strong>实现步骤：</strong><br>
+- 建议是自己用自己用文本框+动态面板Choice1、2组装成下拉列表；<br>
+- 动态面板中选中所有选项组成选项组，设置选项交互样式（如选中变色）<br>
+- 对文本框添加交互，单击时：<br>
+显示/隐藏-切换可见性 Choice<br>
+- 对下拉列表1中所有选项添加动态交互，单击时<br>
+设置选中-当前为“真”<br>
+设置文本-文本框名 -文本为[[LVAR1]]<br>
+显示/隐藏-隐藏面板Choice1、2</p>
+<ul>
+<li>给列表1选项A添加单机时交互<br>
+设置面板状态-面板Choice2 到 state A</li>
+<li>给列表1选项B添加单机时交互<br>
+设置面板状态-面板Choice2 到 state B</li>
+</ul>
+<h3 id="关联两个下拉列表-2">关联两个下拉列表</h3>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[数据库系统概述①]]></title>
         <id>https://Viviairy.github.io/post/shu-ju-ku-ji-ben-zhi-shi-hui-zong/</id>
         <link href="https://Viviairy.github.io/post/shu-ju-ku-ji-ben-zhi-shi-hui-zong/">
         </link>
         <updated>2021-05-04T09:00:36.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
-<p>我们经常会听到数据库这个词，具体什么时候会用到数据库呢？<br>
-教材一般会用最常见的学生学籍管理系统、教务管理系统举例子，除此之外课程设计选题还有图书借阅管理系统、人事管理系统之类。任何一个多用户的应用背后都有强大的数据库系统支持。<br>
-我的这个博客是一个静态的网页，除我之外其他用户都只能浏览文章，不能进行其他交互操作，页面相关的数据都存储在我本地，没有涉及到数据库。 但如果我在CSDN网站发表这篇文章, 大家除了从我主页浏览到网站之外，还可以登录自己的账号进行收藏、评论、点赞等操作，这里CSDN就是一个动态的网页，可以有大量不同的用户，需要很多动态交互信息，这时候就需要数据库来存储用户数据。<br>
-这篇博客会带你系统地梳理清楚数据库相关的概念。</p>
+<p>这篇博客将会带你系统地梳理清楚数据库相关的基础知识。<br>
+参考教材为高等教育出版社出版的《数据库系统概述（第5版）》</p>
 </blockquote>
-<p>开始之前现先来理解一下最最基本的几个概念</p>
+<p>开始之前现先来理解一下最最基本的四个概念</p>
 <ul>
 <li><strong>数据（Date）</strong>
 <ul>
@@ -40,7 +269,7 @@
 <li><strong>数据库管理系统（DateBase Management System,DBMS）</strong>
 <ul>
 <li>即为位于用户和操作系统之间的一层数据管理软件</li>
-<li>常见的有AB的MySQL，微软的SQL Server，甲骨文的Oracle等，感兴趣的自行慢慢了解</li>
+<li>常见的有AB的MySQL，微软的SQL Server，甲骨文的Oracle等</li>
 </ul>
 </li>
 <li><strong>数据库系统（DateBaseSystem,DBS）</strong>
@@ -58,7 +287,8 @@
 2）再把概念模型转换到计算机上某一DBMS支持的<strong>数据模型</strong>。</p>
 </blockquote>
 <h1 id="概念模型">概念模型</h1>
-<p>所谓的概念模型就是从现实世界抽象出来的信息结构，相关的概念很多但也很好理解</p>
+<p>所谓的概念模型就是从现实世界抽象出来的信息结构</p>
+<h2 id="概念模型相关概念">概念模型相关概念</h2>
 <ol>
 <li>实体（entity）
 <ul>
@@ -102,13 +332,12 @@
 E-R图表示了实体型（矩形）、属性（椭圆）和联系（菱形），<br>
 看下面这个栗子就明白了<br>
 <img src="https://Viviairy.github.io/post-images/1620118890244.png" alt="" loading="lazy"></p>
-<h1 id="关系数据库">关系数据库</h1>
-<p>顾名思义就是支持<strong>关系模式</strong>的数据库系统。<br>
-首先关系模型是数据模型的一种，所谓<strong>数据模型</strong>是用来描述数据、组织数据和用来对数据进行操作的。数据库常见的数据模型有层次模型（树形结构）、网状模型、关系模型等，前两种已经基本被淘汰了 ,不多做介绍感兴趣的自己去了解吧。<br>
-关系模式由  A 关系数据结构、B 关系操作集合和 C 关系完整性约束三部分组成，接下来会展开介绍</p>
-<h2 id="a-关系数据结构">A 关系数据结构</h2>
-<p>一句话概括讲清楚关系模式就是：用<strong>表</strong>来表示关系，<br>
-以下是关系模型的一些术语：</p>
+<h1 id="关系模型">关系模型</h1>
+<ul>
+<li>关系模型是<strong>数据模型</strong>的一种。 所谓<strong>数据模型</strong>是数据库的核心和基础，是用来描述数据、组织数据和用来对数据进行操作的模型。数据库常见的数据模型有层次模型（树形结构）、网状模型、关系模型等，前两种已经基本被淘汰不多做介绍。</li>
+<li><strong>关系数据库</strong>就是采用<strong>关系模型</strong>作为数据组织方式的数据库系统。</li>
+<li>以下是关系模型涉及到的一些术语：</li>
+</ul>
 <ol>
 <li>关系（relation）
 <ul>
@@ -128,7 +357,9 @@ E-R图表示了实体型（矩形）、属性（椭圆）和联系（菱形）�
 </li>
 <li>码 （key）
 <ul>
-<li>相关的概念还有主码、外码、候选码，之后再解释</li>
+<li>候选码：<br>
+如果一个属性组的值能唯一标识元组，其子集不能</li>
+<li>主码</li>
 </ul>
 </li>
 <li>域（domain）
@@ -136,15 +367,49 @@ E-R图表示了实体型（矩形）、属性（椭圆）和联系（菱形）�
 <li>属性的取值范围来自某个域，比如性别的域一般来说就是（男，女）</li>
 </ul>
 </li>
-<li>分量：元组中的一个属性值<br>
-关系模式要求是必须规范化，涉及规范化问题在后面会介绍</li>
+<li>分量：元组中的一个属性值</li>
 </ol>
+<ul>
+<li>下面会从  A 关系数据结构、B 关系操作集合和 C 关系完整性约束 三部分组成展开讲解关系模型</li>
+</ul>
+<h2 id="a-关系数据结构">A 关系数据结构</h2>
+<p>关系模式的数据结构只包含单一的数据结构——关系。<br>
+在用户看来关系模式数据的逻辑结构是<strong>一张扁平的二维表</strong>。<br>
+关系模型是建立在<strong>集合代数</strong>基础上的</p>
 <h2 id="b-关系操作集合">B 关系操作集合</h2>
-<p>基本关系操作包括<br>
-1）查询操作<br>
-查询操作分为选择、投影、连接、除、差、并、交、笛卡尔积<br>
-2）增删改操作<br>
-关系操作涉及到的关系数据库标准语言SQL会下一篇博客详细介绍。</p>
+<p>基本关系操作包括<strong>查询</strong>和<strong>增删改</strong></p>
+<h3 id="1查询操作">1）查询操作</h3>
+<p>基于关系代数查询操作分<br>
+<strong>传统关系运算</strong></p>
+<ol>
+<li>并（union）</li>
+<li>差（excpet）</li>
+<li>交（intersection）</li>
+<li>笛卡尔积（cartesian product）<br>
+<strong>专门的关系运算</strong></li>
+<li>选择（select）
+<ul>
+<li>就是限制，针对元组，行运算</li>
+</ul>
+</li>
+<li>投影（projection）
+<ul>
+<li>选择若干属性列组成新关系，列运算</li>
+</ul>
+</li>
+<li>连接（jion）
+<ul>
+<li>从两个关系的笛卡尔积+选择</li>
+</ul>
+</li>
+<li>除运算（division）
+<ul>
+<li>这是一个难点</li>
+</ul>
+</li>
+</ol>
+<h3 id="2增删改操作">2）增删改操作</h3>
+<p>关系操作涉及到的关系数据库标准语言SQL会下一篇博客详细介绍。</p>
 <h2 id="c-数据完整性约束">C 数据完整性约束</h2>
 <p>数据完整性就是指数据的正确性和相容性（符合逻辑），又分为实体完整性、参照完整性、用户自定义完整性</p>
 <ol>

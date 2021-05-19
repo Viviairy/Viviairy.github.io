@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Linux常用指令 Shell | Vivi的博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1621403042418">
+<link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+照着菜鸟教程学就可以，这篇的话是搬运工
+🔗https://www.runoob.com/linux/linux-tutorial.html
+
+Linux 一般作为服务器使用，而服务器一般放在机房，我们通过远程登录到Linux服务器来管理..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Viviairy.github.io">
+        <img src="https://Viviairy.github.io/images/avatar.png?v=1621403042418" class="site-logo">
+        <h1 class="site-title">Vivi的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      vivi
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Viviairy.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Linux常用指令 Shell</h2>
+            <div class="post-date">2021-05-19</div>
+            
+            <div class="post-content" v-pre>
+              <blockquote>
+<p>照着菜鸟教程学就可以，这篇的话是搬运工<br>
+🔗https://www.runoob.com/linux/linux-tutorial.html</p>
+</blockquote>
+<p>Linux 一般作为服务器使用，而服务器一般放在机房，我们通过远程登录到Linux服务器来管理维护系统。<br>
+Linux 系统中是通过 ssh 服务实现的远程登录功能，默认 ssh 服务端口号为 22。<br>
+这里使用到的是XShell本地客户端，远程连接centOS7.5系统</p>
+<h2 id=""></h2>
+<p>shutdown 会给系统计划一个时间关机。它可以被用于停止、关机、重启机器。shutdown 会给系统计划一个时间关机。它可以被用于停止、关机、重启机器。</p>
+<h1 id="shutdown-p-now-关闭机器">shutdown -p now  ### 关闭机器</h1>
+<h1 id="shutdown-h-now-停止机器">shutdown -H now  ### 停止机器</h1>
+<h1 id="shutdown-r-0935-在-0935am-重启机器">shutdown -r 09:35 ### 在 09:35am 重启机器</h1>
+<p>要取消即将进行的关机，只要输入下面的命令：</p>
+<h1 id="shutdown-c">shutdown -c</h1>
+<p>halt 命令通知硬件来停止所有的 CPU 功能，但是仍然保持通电。你可以用它使系统处于低层维护状态。注意在有些情况会它会完全关闭系统。</p>
+<h1 id="halt-停止机器">halt             ### 停止机器</h1>
+<h1 id="halt-p-关闭机器-关闭电源">halt -p          ### 关闭机器、关闭电源</h1>
+<h1 id="halt-reboot-重启机器">halt --reboot    ### 重启机器</h1>
+<p>poweroff 会发送一个 ACPI 信号来通知系统关机。</p>
+<h1 id="poweroff-关闭机器-关闭电源">poweroff           ### 关闭机器、关闭电源</h1>
+<h1 id="poweroff-halt-停止机器">poweroff --halt    ### 停止机器</h1>
+<h1 id="poweroff-reboot-重启机器">poweroff --reboot  ### 重启机器</h1>
+<p>reboot 命令 reboot 通知系统重启。</p>
+<h1 id="reboot-重启机器">reboot           ### 重启机器</h1>
+<h1 id="reboot-halt-停止机器">reboot --halt    ### 停止机器</h1>
+<h1 id="reboot-p-关闭机器">reboot -p        ### 关闭机器</h1>
+<h3 id="xshell命令行">XShell命令行</h3>
+<ul>
+<li>
+<p>cd  去到想去的地方</p>
+<ul>
+<li>cd ..    (  英文的 点点 .. 是去到上一层  )</li>
+<li>cd public （ 进入当前文件夹的public 文件夹下 ）</li>
+<li>cd ~ ( ~ 根目录的意思   回到根目录     )</li>
+</ul>
+</li>
+<li>
+<p>ls  列出当前文件夹下的所有文件及文件夹</p>
+<ul>
+<li>ls -ahl  (-ahl 修饰符是显示完整点的，而且还是一竖排的，看着比较直观)</li>
+</ul>
+</li>
+<li>
+<p>pwd   显示当前所在的文件夹路径</p>
+</li>
+<li>
+<p>mkdir  新建文件夹</p>
+<ul>
+<li>mkdir test     在当前文件夹下新建 test文件夹 ）</li>
+</ul>
+</li>
+<li>
+<p>cp     复制文件或文件夹</p>
+<ul>
+<li>cp flie.txt flie2.txt      把file.txt文件复制为新文件file2.txt</li>
+<li>cp file.txt /root/test/      把文件file.txt从当前目录复制到/root/test/目录下</li>
+<li>cp * /root/test/      把当前目录下的所有未隐藏文件复制到/root/test/目录下</li>
+<li>cp -a flie flie.bak      递归性地把当前目录下的flie目录复制为新目录<br>
+(flie.bak,保持文件属性，并复制所有的文件，包括以句点开头的隐藏文件。为了方便起见，-a选项包含-R选项 )</li>
+<li>cp -i                         在覆盖前询问用户 cp -v 告诉用户正在做什么</li>
+</ul>
+</li>
+<li>
+<p>rm     删除文件或文件夹  如果是文件 就带文件后缀名</p>
+<ul>
+<li>rm * 删除当前目录下的所有文件（未隐藏文件）。</li>
+<li>rm命令不删除目录，除非也指定了-r(递归)参数。</li>
+<li>rm -rf domed 删除domed目录以及它所包含的所有内容</li>
+<li>rm -i a* 删除当前目录下所有以字母a开头的文件，并且在每次删除时，提示用户进行确认</li>
+</ul>
+</li>
+<li>
+<p>mv      移动文件</p>
+<ul>
+<li>mv aa.txt public     把 aa.txt 移动到当前目录下的 public文件夹下</li>
+<li>mv aa.txt ~/root       把 aa.txt 移动到根目录下的 root 文件夹下</li>
+</ul>
+</li>
+<li>
+<p>vim  用vim编辑器打开某个文件 （vim aa.txt）</p>
+<ul>
+<li>vim 编辑器下  先按 ESC 然后 键入 大写的 ZZ 保存改动并退出</li>
+<li>vim 编辑器下  先按 ESC 然后 键入 :q   不 保存改动并退出</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Viviairy.github.io/post/yan-fa-xiang-chan-pin-xiao-bai-hui-yong-axure9-liao-ma/">
+                  <h3 class="post-title">
+                    产品原型绘制 Axure9使用
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

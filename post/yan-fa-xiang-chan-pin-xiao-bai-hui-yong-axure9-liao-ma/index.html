@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>产品原型绘制 Axure9使用 | Vivi的博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1621403042418">
+<link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+
+把软件比喻成别墅，画原型图这一步就相当于盖别墅之前画个设计图做个小模型，具体装修风格交给专业的UI设计师，然后是程序猿负完完整整责盖好。
+Axure 我是一边用一边学的, 先按自己的想法做，碰到不会的时候搜一下，基本就在疯狂百度“Axu..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Viviairy.github.io">
+        <img src="https://Viviairy.github.io/images/avatar.png?v=1621403042418" class="site-logo">
+        <h1 class="site-title">Vivi的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      vivi
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Viviairy.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">产品原型绘制 Axure9使用</h2>
+            <div class="post-date">2021-05-06</div>
+            
+            <div class="post-content" v-pre>
+              <blockquote>
+<ul>
+<li>把软件比喻成别墅，画原型图这一步就相当于盖别墅之前画个设计图做个小模型，具体装修风格交给专业的UI设计师，然后是程序猿负完完整整责盖好。</li>
+<li>Axure 我是一边用一边学的, 先按自己的想法做，碰到不会的时候搜一下，基本就在疯狂百度“Axure9什么功能怎么实现&quot;，多看几个博客试试看不同的方法，然后按自己的思路瞎摸索一下，找个最优解，在这里记录一下用到技巧。</li>
+</ul>
+</blockquote>
+<p>画原型首先是页面绘制，这一步很像是拼乐高，从元件库拖基本元件出来组装一下就完事，得注意一下公司给的文字规范、颜色规范、按钮规范、栅格栏间隔规范之类。<br>
+要实现交互有个很关键的元件叫做<strong>动态面板</strong>，这个面板可以添加不同的状态（state），可以分别在各个状态下绘制不同的东西，比如说，点一下选项局部页面变了、点了下按钮跳出来的一个弹窗、移动一下鼠标图案变化，原型中诸如此类的效果都是用动态面板再添加交互实现的。</p>
+<p>###点击选项改变面板状态</p>
+<p><strong>实现效果：</strong><br>
+页面内有n个选项tab a, b...n控制面板对应的n个状态state A,B...N；<br>
+选项是n选一的，选中选项为蓝色未选中为灰色；<br>
+点进页面之后候默认是处选中a, 面板状态为A, 点击选项实现面板状态切换。<br>
+<strong>使用元件：</strong> 按钮+动态面板<br>
+<strong>实现步骤：</strong></p>
+<ul>
+<li>选中多个选项，先统一设计选项按钮交互形状颜色交互样式；</li>
+<li>选中单个选项按钮 tab a，新建交互，选择触发事件（如单点时），添加动作：
+<ul>
+<li>设置面板状态,【面板】 到【state A】；</li>
+<li>设置选中,【tab a】 为 【真】，【tab b】等其他元件全部为【假】</li>
+</ul>
+</li>
+<li>默认选中面板State A对应tab a， 选项按钮形状属性 - 展示全部 - 【选中】打√；</li>
+</ul>
+<h3 id="鼠标移动改变面板状态">鼠标移动改变面板状态</h3>
+<p><strong>实现效果：</strong><br>
+默认显示状态1；<br>
+鼠标处于面板内时候面板状态变为状态2；<br>
+**使用元件：<strong>动态面板<br>
+** 实现步骤：</strong></p>
+<ul>
+<li>面板添加鼠标滑动时交互</li>
+<li>state1面板设置鼠标移入面板变为state2；state2面板设置鼠标移出面板变回state1；</li>
+<li>将面板内所有元件组合再添加交互能解决鼠标移动面板状态闪动问题；</li>
+</ul>
+<h3 id="关联两个下拉列表">关联两个下拉列表</h3>
+<p><strong>实现效果：</strong><br>
+有两个下拉列表相互关联，<br>
+下拉列表1选中A选项时候，下拉列表2内选项为a1、a2、a3；<br>
+下拉列表1选中B选项时候，下拉列表2内选项变为b1、b2、b3；<br>
+诸如此类<br>
+**使用元件：**动态面板<br>
+<strong>实现步骤：</strong><br>
+- 建议是自己用自己用文本框+动态面板Choice1、2组装成下拉列表；<br>
+- 动态面板中选中所有选项组成选项组，设置选项交互样式（如选中变色）<br>
+- 对文本框添加交互，单击时：<br>
+显示/隐藏-切换可见性 Choice<br>
+- 对下拉列表1中所有选项添加动态交互，单击时<br>
+设置选中-当前为“真”<br>
+设置文本-文本框名 -文本为[[LVAR1]]<br>
+显示/隐藏-隐藏面板Choice1、2</p>
+<ul>
+<li>给列表1选项A添加单机时交互<br>
+设置面板状态-面板Choice2 到 state A</li>
+<li>给列表1选项B添加单机时交互<br>
+设置面板状态-面板Choice2 到 state B</li>
+</ul>
+<h3 id="关联两个下拉列表-2">关联两个下拉列表</h3>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Viviairy.github.io/post/shu-ju-ku-ji-ben-zhi-shi-hui-zong/">
+                  <h3 class="post-title">
+                    数据库系统概述①
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

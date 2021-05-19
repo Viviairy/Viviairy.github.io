@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Markdown常用语法 | Vivi的博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1621403042418">
+<link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+就是总结一下常用的语法
+参考链接简书
+
+标题
+文字前面带几个#号，共有h1-h6六个级别
+h1下面会有一条横线
+列表
+无序列表：文字前面加 + - * 三者中任意一个
+有序列表：文字前面加 数字和点号
+列表嵌套，使用tab 或 空格 缩进..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Viviairy.github.io">
+        <img src="https://Viviairy.github.io/images/avatar.png?v=1621403042418" class="site-logo">
+        <h1 class="site-title">Vivi的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      vivi
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Viviairy.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Markdown常用语法</h2>
+            <div class="post-date">2021-05-19</div>
+            
+            <div class="post-content" v-pre>
+              <blockquote>
+<p>就是总结一下常用的语法<br>
+参考链接<a href="https://www.jianshu.com/p/399e5a3c7cc5%22.MD%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8%22">简书</a></p>
+</blockquote>
+<h3 id="标题">标题</h3>
+<p>文字前面带几个#号，共有h1-h6六个级别<br>
+h1下面会有一条横线</p>
+<h3 id="列表">列表</h3>
+<p>无序列表：文字前面加 + - * 三者中任意一个<br>
+有序列表：文字前面加 数字和点号<br>
+列表嵌套，使用tab 或 空格 缩进控制列表的层数</p>
+<p>###引用说明区块<br>
+在文字前面加&gt;即可，可以多加几个&gt;嵌套</p>
+<p>###引用说明区块<br>
+在文字前面加&gt;即可，可以多加几个&gt;嵌套</p>
+<p>###代码块<br>
+单行代码前后分别用`  括起来<br>
+多行代码前后分别用``` 括起来<br>
+注意是左上角~标志</p>
+<p>###链接<br>
+用<code>[文字](链接 &quot;描述&quot; )</code><br>
+或者<code>[文字]：链接 &quot;描述&quot;</code></p>
+<p>###分割线<br>
+由于至少连续3个 * 或 - 或  _ 符号表示</p>
+<p>###文字<br>
+加粗：文字前后分别用*或_括起来<br>
+倾斜：文字前后分别用**或__括起来<br>
+删除：文字前后分别用~~括起来</p>
+<p>###表格</p>
+<pre><code>123|234|345
+:-|:-:|-:
+abc|bcd|cde
+abc|bcd|cde
+abc|bcd|cde
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">123</th>
+<th style="text-align:center">234</th>
+<th style="text-align:right">345</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">abc</td>
+<td style="text-align:center">bcd</td>
+<td style="text-align:right">cde</td>
+</tr>
+<tr>
+<td style="text-align:left">abc</td>
+<td style="text-align:center">bcd</td>
+<td style="text-align:right">cde</td>
+</tr>
+<tr>
+<td style="text-align:left">abc</td>
+<td style="text-align:center">bcd</td>
+<td style="text-align:right">cde</td>
+</tr>
+</tbody>
+</table>
+<p>三列分别为左对齐，居中，右对齐</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Viviairy.github.io/post/linux-shell/">
+                  <h3 class="post-title">
+                    Linux常用指令 Shell
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
