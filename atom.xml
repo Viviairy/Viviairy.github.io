@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Viviairy.github.io</id>
     <title>Vivi的博客</title>
-    <updated>2021-07-08T05:52:57.843Z</updated>
+    <updated>2021-07-08T06:23:26.133Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Viviairy.github.io"/>
     <link rel="self" href="https://Viviairy.github.io/atom.xml"/>
@@ -10,13 +10,6 @@
     <logo>https://Viviairy.github.io/images/avatar.png</logo>
     <icon>https://Viviairy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Vivi的博客</rights>
-    <entry>
-        <title type="html"><![CDATA[JAVA后端开发传送门]]></title>
-        <id>https://Viviairy.github.io/post/java-chuan-song-men/</id>
-        <link href="https://Viviairy.github.io/post/java-chuan-song-men/">
-        </link>
-        <updated>2021-07-06T15:06:48.000Z</updated>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Starting Brand New Chapter ]]></title>
         <id>https://Viviairy.github.io/post/starting-brand-new-chapter/</id>
