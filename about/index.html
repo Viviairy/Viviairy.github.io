@@ -1,10 +1,10 @@
-<html>
+<html lang="zh">
 <head>
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>计算机网络重点梳理 | Vivi的博客</title>
+<title>关于 - Vivi的博客</title>
 
 <link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1629169664222">
 
@@ -33,7 +33,7 @@
 <!--<script src="media/scripts/index.js"></script>-->
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
@@ -105,200 +105,14 @@
     }
 </script>
     <div class="post-container">
-        <div class="post-detail gt-bg-theme-color-second">
+        <div class="post-detail">
             <article class="gt-post-content">
-                <h2 class="post-title">
-                    计算机网络重点梳理
-                </h2>
-                <div class="post-info">
-                    <time class="post-time gt-c-content-color-first">
-                        · 2021-01-15 ·
-                    </time>
-                    
-                </div>
                 <div class="post-content">
-                    <p>教材用的是《计算机网络自顶向下方法》，本文的话就是简单梳理了一下各层重点的协议，详细可以点这里<a href="https://gy23333.github.io/2020/03/16/%E3%80%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95%E3%80%8B%E7%AC%94%E8%AE%B0/">传送门：自顶向下计网详细笔记</a></p>
-<h1 id="网络层">网络层</h1>
-<h3 id="ip协议_ipv4">IP协议_IPV4</h3>
-<ul>
-<li>IPv4使用<strong>32位</strong>2进制位的地址</li>
-<li>IPv4通常用点分十进制记法书写，例如192.168.0.1</li>
-<li>一个IPv4地址可以分为网络地址和主机地址两部分，其中网络地址可以使用如下形式描述：192.168.0.0/16，其中斜线后的数字表示网络地址部分的长度是16位，即网络地址部分是192.168.0.0。</li>
-<li><strong>子网掩码</strong>
-<ul>
-<li>网掩码是一个应用于TCP/IP网络的32位二进制值，每节8位，必须结合IP地址对应使用。</li>
-<li>子网掩码32位都与IP地址32位对应，如果某位是网络地址，则子网掩码为1，否则为0。 (如228.141.32.0/23网络前缀为23 位，掩码是11111111.11111111.11111110.0,即255.255.254.0 )</li>
-</ul>
-</li>
-</ul>
-<h3 id="ip协议_ipv6">IP协议_IPV6</h3>
-<ul>
-<li>为了根本解决IPv4地址耗尽的问题，IPv6应运而生</li>
-<li>IPv6的地址长度为<strong>128</strong>b</li>
-<li><strong>NAT</strong>
-<ul>
-<li>NAT的主要功能是实现网络地址和IP地址之间的转换。它解决了IPv4地址短缺的问题。</li>
-</ul>
-</li>
-</ul>
-<h3 id="arp协议">ARP协议</h3>
-<ul>
-<li>ARP的主要功能是将<strong>IP地址转换成物理(MAC)地址</strong></li>
-<li>主机的MAC地址长度为<strong>48位</strong><br>
-<a href="https://www.cnblogs.com/cxuanBlog/p/14265315.html">传送门：一文详解ARP</a></li>
-</ul>
-<h4 id="vpn-虚拟专用网络">VPN 虚拟专用网络</h4>
-<h4 id="路由器选择">路由器选择</h4>
-<ul>
-<li>AS自治系统内部的路由选择：<strong>RIP</strong> ,<strong>OSRF</strong>内部网关协议</li>
-<li>AS自治系统之间的路由选择：<strong>BGP</strong> 外部网关协议</li>
-</ul>
-<hr>
-<h1 id="传输层">传输层</h1>
-<p><a href="https://www.cnblogs.com/fundebug/p/differences-of-tcp-and-udp.html">传送门：一文搞懂TCP与UDP的区别</a></p>
-<h3 id="tcp协议">TCP协议</h3>
-<ul>
-<li>TCP是面向连接的、提供可靠端到端字节流服务的协议 (无结构流模式)</li>
-<li>三次握手，四次挥手：</li>
-<li>当客户和服务器彼此交换数据前，必须先在双方之间建立一个TCP连接，之后才能传输数据。相当于建立一个传递信息的通道</li>
-<li>流量控制，拥塞控制：
-<ul>
-<li>TCP提供超时重发，丢弃重复数据，检验数据，流量控制等功能，保证数据完完整整从一端传到另一端,注意哦是点对点传输。</li>
-</ul>
-</li>
-<li>一些要求比较高的服务一般使用TCP协议，如FTP、Telnet、SMTP、HTTP、POP3等</li>
-</ul>
-<h3 id="udp协议">UDP协议</h3>
-<ul>
-<li>是一个简单的面向数据报的运输层协议 (数据报模式)</li>
-<li>UDP不太可靠，只是把应用程序传给IP层的数据报发送出去，但是并不能保证它们能到达目的地。这么多小包,丢一个也没关系...</li>
-<li>UDP在传输数据报前不用在客户和服务器之间建立一个连接，且没有超时重发等机制，故而传输速度很快。</li>
-<li>可以拥有大量Client,支持一对一,一对多</li>
-<li>使用UDP协议的常见服务有DNS、SNMP、QQ等</li>
-</ul>
-<hr>
-<h1 id="应用层">应用层</h1>
-<blockquote>
-<p><strong>端口号</strong></p>
-<ul>
-<li>端口就好像是门牌，客户端可以通过ip地址找到对应的服务器端，但是服务器端是有很多端口的，为了对端口进行区分，将每个端口进行了编号，这就是端口号 ,每个应用程序对应一个端口号,客户端才能真正的访问到该服务器。 端口号长度是16位。<br>
-<a href="https://wsgzao.github.io/post/service-names-port-numbers/">传送门：TCP/UDP端口列表</a></li>
-</ul>
-</blockquote>
-<h4 id="rip协议">RIP协议</h4>
-<ul>
-<li>Routing Information Protocol,路由信息协议</li>
-</ul>
-<h4 id="http协议">HTTP协议</h4>
-<p>-<a href="https://blog.csdn.net/xiaoming100001/article/details/81109617">传送门：HTTP协议与HTTPS协议</a></p>
-<h4 id="telenet协议">Telenet协议</h4>
-<ul>
-<li>Telnet服务的功能是实现远程登陆</li>
-<li>它采用TCP的<strong>23</strong>号端口</li>
-</ul>
-<h4 id="ssh协议">SSH协议</h4>
-<ul>
-<li>SSH服务的功能是实现<strong>安全的远程登陆</strong></li>
-<li>它采用TCP的<strong>22</strong>号端口</li>
-</ul>
-<h4 id="dns协议">DNS协议</h4>
-<ul>
-<li>实现<strong>域名到IP地址</strong>或<strong>IP地址到域名</strong>的映射。</li>
-<li>根域名-顶级域名-二级域名</li>
-<li>使用<strong>53</strong>号端口</li>
-</ul>
-<h4 id="smtp协议">SMTP协议</h4>
-<ul>
-<li>使用25号端口发送邮件；</li>
-</ul>
-<h4 id="pop3协议和imap协议">POP3协议和IMAP协议</h4>
-<ul>
-<li>POP3使用110号端口接收邮件，IMAP使用143号端口接收邮件。</li>
-<li>POP3（即删)，IMAP（可存)<br>
--<a href="https://www.zhihu.com/question/24605584">POP3、AMTP、ICMP的区别</a></li>
-</ul>
-<h4 id="ftp协议">FTP协议</h4>
-<ul>
-<li>文件传送协议，主要功能是实现文件的上传和下载</li>
-<li>它的数据通道采用TCP的20号端口，而其控制通道采用TCP的21号端口</li>
-</ul>
-<h4 id="tftp协议">TFTP协议</h4>
-<ul>
-<li>Trivial File Transfer Protocol, 简单文件传输协议</li>
-<li>TFTP不具备通常的FTP的许多功能，它只能从文件服务器上获得或写入文件，没有列出目录的功能，也不能对用户进行身份鉴别</li>
-<li>TFTP可用于UDP环境；比如当需要将程序或者文件同时向许多机器下载时就往往需要使用到TFTP协议。TFTP代码所占的内存较小，这对于较小的计算机或者某些特殊用途的设备来说是很重要的。</li>
-</ul>
-<h4 id="dhcp协议">DHCP协议</h4>
-<ul>
-<li>动态主机配置协议</li>
-</ul>
-<h4 id="ntp协议">NTP协议</h4>
-<ul>
-<li>NTP服务使网络内的所有设备时钟保持一致</li>
-<li>使用UDP的123号端口。</li>
-</ul>
-<h4 id="web页面请求过程">Web页面请求过程：</h4>
-<ol>
-<li>DHCP配置主机信息</li>
-<li>ARP解析MAC地址</li>
-<li>DNS解析域名</li>
-<li>HTTP请求响应</li>
-</ol>
-<h1 id="链路层">链路层</h1>
-<ul>
-<li>基本问题
-<ul>
-<li>封装成帧，透明传输，错误检测(CRC循环冗余检验)</li>
-</ul>
-</li>
-<li>信道分类
-<ul>
-<li>广播信道：一对多，信道复用 or
-<ul>
-<li>**CSMA/CD **载波监听多点接入 / 碰撞检测</li>
-</ul>
-</li>
-<li>点对点信道：
-<ul>
-<li><strong>PPP</strong> 点对点协议</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>信道复用技
-<ul>
-<li>频分复用，时分复用，统计时分复用，波分复用，码分复用</li>
-</ul>
-</li>
-<li>MAC 地址</li>
-<li>局域网
-<ul>
-<li>以太网：拓扑结构局域网</li>
-<li>交换机：学习MAC地址-接口的映射</li>
-</ul>
-</li>
-</ul>
-<h1 id="物理层">物理层</h1>
-<ul>
-<li>通信方式</li>
-<li>带通调制</li>
-</ul>
-
+                    
                 </div>
             </article>
         </div>
-
-        
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://Viviairy.github.io/post/mi-ma-xue-chong-dian-shu-li/" class="post-title gt-a-link">
-                    密码学重点梳理
-                </a>
-            </div>
-        
-
-        
-
+        <br>
         
             
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
@@ -345,11 +159,11 @@
 </script>
 
             
-
             
         
 
         
+
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">vivi</div>
