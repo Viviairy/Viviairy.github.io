@@ -1,0 +1,499 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>基于GmSSL的密码算法检验 | Viviairy</title>
+
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1634286296433">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<style>
+    hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Viviairy
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1634286296433"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    基于GmSSL的密码算法检验
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-09-24 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <blockquote>
+<p>工具：GmSSL<br>
+环境： win10 VS2019 perl5.26 NASM<br>
+windows安装gmssl：https://blog.csdn.net/zyhse/article/details/112325129<br>
+gmssl github地址：https://github.com/guanzhi/GmSSL</p>
+</blockquote>
+<p>#哈希算法检验</p>
+<h2 id="sm3md5sha1sha256">SM3，MD5，SHA1，SHA256</h2>
+<h4 id="1-计算哈希命令行">(1) 计算哈希命令行：</h4>
+<pre><code class="language-shell"># 进入gmssl后输入：
+sm3 1.txt
+md5 1.txt
+sha1 1.txt
+sha256 1.txt
+
+# 如不进入,在命令前加上gmssl即可
+# gmssl所有相关的命令行同理
+</code></pre>
+<h4 id="2检测逻辑">(2)检测逻辑：</h4>
+<figure data-type="image" tabindex="1"><img src="https://Viviairy.github.io/post-images/1634285154829.png" alt="" loading="lazy"></figure>
+<h3 id="hmacmd5-hmacsha1hmacsha256">HmacMD5 ，HmacSHA1，HmacSHA256</h3>
+<h4 id="1计算哈希命令行">(1)计算哈希命令行：</h4>
+<pre><code class="language-shell">#进入gmssl后输入：
+dgst -md5 -hmac KEY 1.txt
+dgst -sha1 -hmac KEY 1.txt
+dgst -sha256 -hmac KEY 1.txt
+# KEY为密钥， 1.txt为原文
+</code></pre>
+<h4 id="2检测逻辑-2">(2)检测逻辑：</h4>
+<figure data-type="image" tabindex="2"><img src="https://Viviairy.github.io/post-images/1634285199467.png" alt="" loading="lazy"></figure>
+<h1 id="对称密码检验">对称密码检验</h1>
+<ul>
+<li>
+<p><strong>填充模式：</strong></p>
+<p>由于SM4加密算法按照128个位进行分组，所以很大几率会出现最后一个分组不够128位的情况，需要进行<strong>填充</strong>，填充方式有很多，比如ZeroPadding、PKCS7Padding、PKCS5Padding，不管使用哪种方式，最后每个分组都是128位。GmSSL中可以指定CBC填充方式的，默认采用PKCS7填充，但是你可以选择不填充或者其他的填充方案。具体细节参考evp.h头文件以及手册页。</p>
+</li>
+<li>
+<p><strong>IV，Initialization Vector</strong></p>
+<p>是许多任务作模式中用于将加密随机化的一个位块，由此即使同样的明文被多次加密也会产生不同的密文，避免了较慢的重新产生密钥的过程。初始化向量与密钥相比有不同的安全性需求，因此IV通常无须保密，然而在大多数情况中，不应当在使用同一密钥的情况下两次使用同一个IV。对于CBC和CFB，重用IV会导致泄露明文首个块的某些信息，亦包括两个不同消息中相同的前缀。对于OFB和CTR而言，重用IV会导致完全失去安全性。另外，在CBC模式中，IV在加密时必须是无法预测的；</p>
+</li>
+</ul>
+<h2 id="sm4">sm4</h2>
+<h4 id="1-加密命令行">(1) 加密命令行：</h4>
+<pre><code class="language-shell">#进入gmssl后输入：
+#加密模式ECB，无需IV参数
+enc -e  -sms4-ecb -in 1.txt -out sm4ecbenc.txt  -K 123456789 -p -nosalt 
+#加密模式CBC, 需要IV参数
+enc -e  -sms4-cbc -in 1.txt -out sm4cbcenc.txt  -K 123456789 -iv=987654321 -p -nosalt
+</code></pre>
+<p>(2)检测逻辑：</p>
+<figure data-type="image" tabindex="3"><img src="https://Viviairy.github.io/post-images/1634285291441.png" alt="" loading="lazy"></figure>
+<h3 id="aes">AES</h3>
+<h5 id="1-加密命令行-2">(1) 加密命令行：</h5>
+<pre><code class="language-shell">#进入gmssl后输入：
+# 算法AES,密钥长度192，加密模式ecb,无需iv
+enc -e -aes-192-ecb -in 1.txt -out aes192ecbenc.txt -K 123456789 -p -nosalt
+# 算法AES,密钥长度128，加密模式cfb，需要iv
+enc -e -aes-128-cfb -in 1.txt -out aes128cfbenc.txt -K 123456789 -iv=987654321 -p -nosalt
+</code></pre>
+<h4 id="2检测逻辑-3">(2)检测逻辑：</h4>
+<figure data-type="image" tabindex="4"><img src="https://Viviairy.github.io/post-images/1634285336644.png" alt="" loading="lazy"></figure>
+<h1 id="公钥加密">公钥加密</h1>
+<p>公钥加密算法整理逻辑如图：<br>
+<img src="https://Viviairy.github.io/post-images/1634285414329.png" alt="" loading="lazy"></p>
+<h2 id="sm2加解密">sm2加解密</h2>
+<h4 id="1私钥公钥的生成命令行">(1)私钥公钥的生成命令行：</h4>
+<pre><code class="language-shell">#进入gmssl后输入：
+#手动生成私钥SM2PrivateKey.pem
+ecparam -genkey -name SM2 -out SM2PrivateKey.pem
+#通过私钥生成公钥SM2PublicKey.pem
+ec -in SM2PrivateKey.pem -pubout -out SM2PublicKey.pem
+</code></pre>
+<h4 id="2加解密命令行">(2)加解密命令行：</h4>
+<pre><code class="language-shell"># 通过公钥加密生成密文txt文件
+gmssl sm2utl -encrypt -in 1.txt -pubin -inkey SM2PublicKey.pem -out sm2enc.txt
+# 通过私钥对加密文文件进行解密
+gmssl sm2utl -decrypt -in sm2enc.txt -inkey SM2PrivateKey.pem -out sm2dec.txt
+</code></pre>
+<blockquote>
+<p><em><strong>注意！！！！</strong></em><br>
+<em>这里有个BUG，进入gmssl后输入命令加解密过程会出现报错</em><br>
+<em>直接在命令行带上gmssl输入的话就可以运行成功</em></p>
+</blockquote>
+<h4 id="3检测逻辑">(3)检测逻辑：</h4>
+<figure data-type="image" tabindex="5"><img src="https://Viviairy.github.io/post-images/1634285400800.png" alt="" loading="lazy"></figure>
+<h2 id="rsa加解密">RSA加解密</h2>
+<h4 id="1私钥公钥的生成命令行-2">(1)私钥公钥的生成命令行：</h4>
+<pre><code class="language-shell">#手动生成私钥RSAPrivateKey.pem
+gmssl genrsa -out RSAPrivateKey.pem
+#通过私钥生成公钥RSAPublicKey.pem
+gmssl rsa -in RSAPrivateKey.pem -pubout -out RSAPublicKey.pem
+</code></pre>
+<blockquote>
+<p><em><strong>注意！！</strong></em><br>
+<em>生成的密钥默认长度是2048bit，在后面加上1024即可生成1024bit密钥</em></p>
+</blockquote>
+<h4 id="2加解密命令行-2">(2)加解密命令行：</h4>
+<pre><code class="language-shell"># 通过公钥加密生成密文txt文件
+gmssl rsautl -encrypt -in 0.txt -inkey RSAPublicKey1024.pem -pubin -out rsaenc.txt
+# 通过私钥对加密文文件进行解密
+gmssl rsautl -decrypt -in rsaenc.txt -inkey RSAPrivateKey1024.pem -out rsadec.txt
+</code></pre>
+<blockquote>
+<p><em><strong>注意！！！！</strong></em><br>
+<em>这里又有个坑，容易出现因为加密内容超长抛出异常，非对称加密的原文长度是有限制的，因为cpu消耗比较高，在实际应用 设计的时候都是用来加密 哈希值 或者 会话密码 之类的</em>。<br>
+<em>不注意长度的话，就可以看到报错了</em></p>
+</blockquote>
+<h4 id="3检测逻辑-2">(3)检测逻辑：</h4>
+<p>同sm2</p>
+<h1 id="数字签名">数字签名</h1>
+<h2 id="sm2签名">sm2签名</h2>
+<h4 id="1数字签名生成">(1)数字签名生成</h4>
+<pre><code class="language-shell"># 签名算法中的哈希采用sm3
+gmssl dgst -sign SM2PrivateKey.pem -keyform PEM -sm3 -out 0.sign 0.txt
+</code></pre>
+<h4 id="2数字签名检验">(2)数字签名检验</h4>
+<pre><code class="language-shell"># 签名算法中的哈希采用sm3
+gmssl dgst -verify SM2PublicKey.pem -keyform PEM -sm3 -signature 0.sign 0.txt 
+</code></pre>
+<h4 id="3检测逻辑-3">(3)检测逻辑：</h4>
+<p>为了便于理解数字签名的用法，给出A-B双方通讯A向B发送数据的完整过程图；<br>
+数字签名及其验证为红色方框内部分<br>
+<img src="https://Viviairy.github.io/post-images/1634284124039.png" alt="" loading="lazy"></p>
+<h2 id="rsa签名">rsa签名</h2>
+<h4 id="1数字签名生成-2">(1)数字签名生成</h4>
+<pre><code class="language-shell"># 签名算法中的哈希采用sm3
+gmssl dgst -sign RSAPrivateKey1024.pem -keyform PEM -sm3 -out 0rsa.sign 0.txt
+</code></pre>
+<h4 id="2数字签名检验-2">(2)数字签名检验</h4>
+<pre><code class="language-shell"># 签名算法中的哈希采用sm3
+gmssl dgst -verify RSAPublicKey1024.pem -keyform PEM -sm3 -signature 0rsa.sign 0.txt 
+</code></pre>
+<h4 id="3检测逻辑-4">(3)检测逻辑：</h4>
+<p>sm2检测逻辑</p>
+<h1 id="gmssl用法说明">GmSSL用法说明</h1>
+<pre><code class="language-shell"># GmSSL&gt; help
+Standard commands
+asn1parse         ca                ciphers           cms
+crl               crl2pkcs7         dgst              dhparam
+dsa               dsaparam          ec                ecparam
+enc               engine            errstr            exit
+gendsa            genpkey           genrsa            gensm9
+help              list              nseq              ocsp
+otp               paiutl            passwd            pkcs12
+pkcs7             pkcs8             pkey              pkeyparam
+pkeyutl           prime             rand              rehash
+req               rsa               rsautl            s_client
+s_server          s_time            sdf               sess_id
+skf               sm2               sm2utl            sm9
+sm9param          sm9utl            smime             speed
+spkac             srp               ts                verify
+version           x509
+
+Message Digest commands (see the `dgst' command for more details)
+blake2b512        blake2s256        gost              md4
+md5               mdc2              rmd160            sha1
+sha224            sha256            sha384            sha512
+sm3
+
+Cipher commands (see the `enc' command for more details)
+aes-128-cbc       aes-128-ecb       aes-192-cbc       aes-192-ecb
+aes-256-cbc       aes-256-ecb       base64            bf
+bf-cbc            bf-cfb            bf-ecb            bf-ofb
+camellia-128-cbc  camellia-128-ecb  camellia-192-cbc  camellia-192-ecb
+camellia-256-cbc  camellia-256-ecb  cast              cast-cbc
+cast5-cbc         cast5-cfb         cast5-ecb         cast5-ofb
+des               des-cbc           des-cfb           des-ecb
+des-ede           des-ede-cbc       des-ede-cfb       des-ede-ofb
+des-ede3          des-ede3-cbc      des-ede3-cfb      des-ede3-ofb
+des-ofb           des3              desx              idea
+idea-cbc          idea-cfb          idea-ecb          idea-ofb
+rc2               rc2-40-cbc        rc2-64-cbc        rc2-cbc
+rc2-cfb           rc2-ecb           rc2-ofb           rc4
+rc4-40            rc5               rc5-cbc           rc5-cfb
+rc5-ecb           rc5-ofb           seed              seed-cbc
+seed-cfb          seed-ecb          seed-ofb          sms4
+sms4-cbc          sms4-cfb          sms4-ecb          sms4-ofb
+zuc               zuc256
+</code></pre>
+<pre><code class="language-shell"># GmSSL&gt; dgst -help
+Usage: dgst [options] [file...]
+  file... files to digest (default is stdin)
+ -help              Display this summary
+ -c                 Print the digest with separating colons
+ -r                 Print the digest in coreutils format
+ -rand val          Use file(s) containing random data to seed RNG or an EGD sock
+ -out outfile       Output to filename rather than stdout
+ -passin val        Input file pass phrase source
+ -sign val          Sign digest using private key
+ -verify val        Verify a signature using public key
+ -prverify val      Verify a signature using private key
+ -signature infile  File with signature to verify
+ -keyform format    Key file format (PEM or ENGINE)
+ -hex               Print as hex dump
+ -binary            Print in binary form
+ -d                 Print debug info
+ -debug             Print debug info
+ -fips-fingerprint  Compute HMAC with the key used in OpenSSL-FIPS fingerprint
+ -hmac val          Create hashed MAC with key
+ -mac val           Create MAC (not necessarily HMAC)
+ -sigopt val        Signature parameter in n:v form
+ -macopt val        MAC algorithm parameters in n:v form or key
+ -*                 Any supported digest
+ -engine val        Use engine e, possibly a hardware device
+ -engine_impl       Also use engine given by -engine for digest operations
+ -config val        A config file
+</code></pre>
+<pre><code class="language-shell"># GmSSL&gt; enc -help
+Usage: enc [options]
+Valid options are:
+ -help          Display this summary
+ -ciphers       List ciphers
+ -in infile     Input file #输入文件
+ -out outfile   Output file #输出文件
+ -pass val      Passphrase source
+ -e             Encrypt
+ -d             Decrypt
+ -p             Print the iv/key 
+ -P             Print the iv/key and exit
+ -v             Verbose output
+ -nopad         Disable standard block padding
+ -salt          Use salt in the KDF (default)
+ -nosalt        Do not use salt in the KDF
+ -debug         Print debug info
+ -a             Base64 encode/decode, depending on encryption flag
+ -base64        Same as option -a
+ -A             Used with -[base64|a] to specify base64 buffer as a single line
+ -bufsize val   Buffer size
+ -k val         Passphrase
+ -kfile infile  Read passphrase from file
+ -K val         Raw key, in hex
+ -S val         Salt, in hex
+ -iv val        IV in hex
+ -md val        Use specified digest to create a key from the passphrase
+ -none          Don't encrypt
+ -*             Any supported cipher
+ -engine val    Use engine, possibly a hardware device
+ -config val    A config file
+</code></pre>
+<pre><code class="language-shell"># GmSSL&gt; ecparam -help
+Usage: ecparam [options]
+Valid options are:
+ -help             Display this summary
+ -inform PEM|DER   Input format - default PEM (DER or PEM)
+ -outform PEM|DER  Output format - default PEM
+ -in infile        Input file  - default stdin
+ -out outfile      Output file - default stdout
+ -text             Print the ec parameters in text form
+ -C                Print a 'C' function creating the parameters
+ -check            Validate the ec parameters
+ -list_curves      Prints a list of all curve 'short names'
+ -no_seed          If 'explicit' parameters are chosen do not use the seed
+ -noout            Do not print the ec parameter
+ -name val         Use the ec parameters with specified 'short name'
+ -conv_form val    Specifies the point conversion form
+ -param_enc val    Specifies the way the ec parameters are encoded
+ -genkey           Generate ec key
+ -rand val         Files to use for random number input
+ -engine val       Use engine, possibly a hardware device
+ -config val       A config file
+ 
+# GmSSL&gt; ec -help
+Usage: ec [options]
+Valid options are:
+ -help             Display this summary
+ -in val           Input file
+ -inform format    Input format - DER or PEM
+ -out outfile      Output file
+ -outform PEM|DER  Output format - DER or PEM
+ -noout            Don't print key out
+ -text             Print the key
+ -param_out        Print the elliptic curve parameters
+ -pubin            Expect a public key in input file
+ -pubout           Output public key, not private
+ -no_public        exclude public key from private key
+ -check            check key consistency
+ -passin val       Input file pass phrase source
+ -passout val      Output file pass phrase source
+ -param_enc val    Specifies the way the ec parameters are encoded
+ -conv_form val    Specifies the point conversion form
+ -*                Any supported cipher
+ -engine val       Use engine, possibly a hardware device
+ -config val       A config file
+</code></pre>
+<pre><code class="language-shell"># GmSSL&gt; sm2utl -help
+Usage: sm2utl [options]
+Valid options are:
+ -help                    Display this summary
+ -in infile               Input file - default stdin
+ -out outfile             Output file - default stdout
+ -dgst                    Generate input data digest with Z value
+ -sign                    Sign input data with private key and public parameters
+ -verify                  Verify with signer's ID and public parameters
+ -encrypt                 Encrypt input data with recipient's ID
+ -decrypt                 Decrypt input data with private key
+ -id val                  Identity for Z value
+ -sigfile infile          Signature file (verify operation only)
+ -inkey val               Private key for signing or decryption
+ -pubin                   Input is a public key
+ -certin                  Input is a cert with a public key
+ -passin val              Input file pass phrase source
+ -keyform PEM|DER|ENGINE  Private key format - default PEM
+ -*                       Any supported digest
+ -engine val              Use engine, possibly a hardware device
+ -engine_impl             Also use engine given by -engine for crypto operations
+ -config val              A config file
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://Viviairy.github.io/zi-ding-yi-zhu-ti/" class="post-title gt-a-link">
+                    划水 | 换上喜欢的主题
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '',
+		appKey: '',
+		avatar: '',
+		pageSize: 5,
+		recordIp: false,
+		placeholder: 'Just Go Go',
+		visitor: false,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">这里是VIVI的博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://Viviairy.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

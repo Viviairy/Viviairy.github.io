@@ -1,0 +1,365 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>基础 | 密码学重点梳理 | Viviairy</title>
+
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1634286296433">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<style>
+    hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Viviairy
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1634286296433"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    基础 | 密码学重点梳理
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-06-24 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <blockquote>
+<p>密码学是研究编制密码和破译密码技术的科学，包括<br>
+<strong>密码编码学 (Cryptography)</strong> ：研究怎样编码、 如何对消息进行加密<br>
+<strong>密码分析学(Cryptanalyst)</strong>：研究如何对密文进行破译</p>
+</blockquote>
+<p>密码技术相关概念如下：<br>
+<strong>明文</strong>：信息的原始形式<br>
+<strong>密文</strong>：明文经过变换加密后的形式<br>
+<strong>加密</strong>:	由明文——&gt;加密算法——&gt;变成密文的过程<br>
+<strong>解密</strong>:	由密文——&gt;解密算法——&gt;恢复成明文的过程</p>
+<h2 id="一-古典密码">一、 古典密码</h2>
+<p>古典密码的基本手段是替代和置换，针对的是字符；</p>
+<h3 id="11-替换密码">1.1 替换密码</h3>
+<ul>
+<li>单表代换密码：例如 (Caesar)凯撒密码
+<ul>
+<li>结构过于简单，可利用频率分析法进行有效的攻击</li>
+</ul>
+</li>
+<li>多表替换密码：例如 维吉尼亚密码、 Enigma转轮密码机</li>
+</ul>
+<h3 id="12-置换密码">1.2 置换密码</h3>
+<ul>
+<li>例如 Hill密码(矩阵加密)</li>
+</ul>
+<blockquote>
+<p>手工阶段和机械阶段使用的密码技术可以称为古典密码技术，<strong>古典密码中数据的安全基于加密算法的保密</strong><br>
+1949年~1975年，计算机的出现使基于复杂计算的密码成为可能，现代数学方法为加密技术提供了新的工具，信息论为密码学提供了理论基础；主要特点是：<strong>(1) 数据的安全基于密钥而不是算法的保密，(2)高次迭代技术和非线性技术的使用，(3) 算法设计需要抵抗各类已知的分析攻击方法</strong><br>
+1977年，美国的数据加密标准DES公布，公钥密码使无密钥传输的保密通信成为可能；2001年，美国正式颁布AES为新的国家标准； 近年来，量子密码、DNA密码、化学密码的研究又把我们带入了一个新的密码时代；</p>
+</blockquote>
+<h2 id="二-对称加密">二、对称加密</h2>
+<h3 id="21-对称加密体制">2.1 对称加密体制</h3>
+<p>对称加密体系也称私钥加密体制、单钥加密体制<br>
+特点：加密密钥 = 解密密钥；加密算法 ≈ 解密算法；<br>
+优点：速度快，效率高<br>
+缺陷：需要安全分配对称密钥</p>
+<h3 id="22-流密码">2.2 流密码</h3>
+<p>对一次一密的模拟，核心是密钥流生成器<br>
+经典的密钥流生成器：线性反馈移位寄存器(LFSR)<br>
+<strong>常见流密码：例如RC4</strong></p>
+<h3 id="23-分组密码">2.3 分组密码</h3>
+<p>分组密码设计原则：混淆和扩散<br>
+和流密码的区别：对明文的处理方式不同<br>
+<strong>常见分组密码有： DES(数据加密标准), 3DES ，AES(高级加密标准)，SM4/SMS4(4号国密算法)</strong></p>
+<h3 id="231-des">2.3.1【 DES 】</h3>
+<ul>
+<li>DES加密算法与解密算法相同，只是解密使用子密钥与加密子密钥的使用顺序刚好相反</li>
+<li>D ES在对明文进行初始置换之后，执行16论的迭代密码。最后经的逆变换得到密文。所谓迭代密码是在密钥控制下多次利用轮函数进行加密变换，以实现扩散和混淆的效果</li>
+<li>算法详情：
+<ul>
+<li>分组长度：明文、密文64bit</li>
+<li>密钥长度：64bit(实际只有56bit)</li>
+<li>密钥扩展：输入64位密钥，扩展成都是48bit的轮密钥K1, K2,…,K16</li>
+<li>轮变换：每一轮核心运算，输入右分组(32位), 轮密钥(48位)，输出32位；8个S盒，输入6bit，输出4bit</li>
+<li>加密：输入明文64位，经过IP置换，对置换后的数据分成左右两半L<sub>0</sub>与R<sub>0</sub>，实施16轮轮变换，经过IP<sup>-1</sup>置换，得到64bit密文</li>
+<li>解密与加密几乎一样, 不同之处在于轮密钥的使用顺序</li>
+</ul>
+</li>
+</ul>
+<h3 id="232-3des">2.3.2 【 3DES 】</h3>
+<ul>
+<li>分组长度：明文、密文64bit</li>
+<li>密钥长度：192bit(实际只有168bit), 使用顺序为(K1, K2, K3)</li>
+<li>密文：C=DES<sub>k3</sub>(DES<sub>K2</sub><sup>-1</sup>(DES<sub>K1</sub>(M)))</li>
+</ul>
+<h3 id="233-aes">2.3.3 【 AES】</h3>
+<ul>
+<li>算法名称：Rijndael</li>
+<li>分组长度：明/密文128/192/256bit</li>
+<li>密钥长度：128/192/256bit</li>
+<li>密钥扩展(以128bit为例)：输入密钥128bit，生成11轮128bit的轮密钥</li>
+<li>轮变换：对状态矩阵State进行10轮变换，每轮变换包含(1) 字节替换：S盒为8bit输入, 8bit输出；(2) 行移位；(3) 列混合；(4）轮密钥加</li>
+<li>加解密：输入明文128bit，作为第0轮的状态矩阵State；经过10轮变换，输出密文128bit</li>
+</ul>
+<h3 id="234-sm4-国密算法">2.3.4【 SM4 国密算法】</h3>
+<ul>
+<li>前身是SMS4算法</li>
+<li>分组长度/密钥长度：128bit</li>
+<li>密钥扩展：输入128bit密钥，扩展成32轮32bit的子密钥</li>
+<li>加解密：输入明文128位，分成四部分, 实施32次轮变换, 再进行逆序处理得到密文</li>
+</ul>
+<h2 id="三-公钥密码">三、 公钥密码：</h2>
+<h3 id="31-公钥加密体制">3.1 公钥加密体制</h3>
+<p>也称非对称加密体制、双钥加密体制<br>
+特点：加密密钥(公开) ≠ 解密密钥(保密)；加密算法 ≠ 解密算法，公钥密码体系中将密钥一分为二，一个是可公开的密钥PK，另一个则是需要保密的私钥SK ，并且PK≠SK<br>
+当多个用户存在时，它可以实现一个用户公钥加密的消息只能被用户私钥解密（可用于公共网络中实现保密通信），或反过来，由一个用户用私钥加密的消息可被多个用户用公钥解读（可用于认证系统中对消息进行数字签）<br>
+<strong>安全性主要基于数学上的计算困难问题，如大数分解、离散对数、椭圆曲线上离散对数</strong><br>
+缺陷：与对称密码相比,效率低</p>
+<blockquote>
+<p>实际应用中常常采用混合加密体制：用 对称加密体制加密明文数据；用公钥加密体制加密对称加密体制中的密钥；解决了对称加密中的密钥分配问题。而由于密钥一般都比较短，用公钥加密也不会多花很长时间</p>
+</blockquote>
+<h3 id="311rsa">3.1.1【RSA】</h3>
+<ul>
+<li>安全性基于数论和计算复杂性理论中的<strong>大数分解问题</strong>，求两个大素数的乘积是计算上容易的，但要分解两个大素数的积求出它的素因子是计算上困难的。</li>
+<li>处于安全性考虑，建议使用1024位的模数n，对于重要场合应该使用2048甚至4096位</li>
+<li>算法详情：
+<ul>
+<li>密钥生成：生成公共参数N，配对的公钥e和私钥d
+<ul>
+<li>选取两个n比特的素数p、q，令N = p·q，计算 φ(N)=(p-1)(q-1)，选取与φ(N)互素的正整数e，求正整数d，使得ed ≡ 1 (modφ(N))，公共参数是N, 公钥是e, 私钥是d；</li>
+</ul>
+</li>
+<li>加密： 明文m利用公共参数N和公钥e，加密生成密文c=m<sup>e</sup>(modN)</li>
+<li>解密：密文c利用公共参数N和私钥d，解密成明文m'=c<sup>d</sup>(modN)</li>
+</ul>
+</li>
+</ul>
+<h3 id="312elgamal">3.1.2【Elgamal】</h3>
+<ul>
+<li>基于离散对数问题<br>
+-<a href="https://zhuanlan.zhihu.com/p/340162669">传送门:Elgamal加密算法详解</a></li>
+</ul>
+<h3 id="312ecc">3.1.2【ECC】</h3>
+<ul>
+<li>基于椭圆曲线上离散对数</li>
+<li><a href="https://blog.csdn.net/sitebus/article/details/82835492">传送门：ECC椭圆曲线加解密原理详解</a></li>
+</ul>
+<h2 id="32-数字签名">3.2 数字签名</h2>
+<ul>
+<li>消息 — 私钥签名算法  —   (消息||签名)  — 公钥验证算法 —   Yes or No</li>
+<li>常见的数字签名体制：RSA数字签名体制、Elgamal数字签名体制、DSA数字签名体制</li>
+</ul>
+<blockquote>
+<p>数字签名：消息 - &gt; (消息, 签名) -&gt; Yes or No<br>
+公钥加密：明文 - &gt; 密文 -&gt; 明文<br>
+数字签名：签名时用私钥, 验证时用公钥<br>
+公钥加密：加密时用公钥, 解密时用私钥</p>
+</blockquote>
+<h2 id="四-密钥管理">四、 密钥管理</h2>
+<ul>
+<li>对称密钥管理：多层密钥体系：主密钥 / 次主密钥 / 会话密钥</li>
+<li>Diffie-Hellman密钥协商(基于离散对数问题)</li>
+<li>公钥数字证书与PKI
+<ul>
+<li>公钥基础设施(PKI)：组成部分</li>
+<li>数字证书(X.509)：基本格式</li>
+<li>核心思想：实现用户身份与其公钥的一一对应</li>
+<li>核心机构：认证机构CA</li>
+</ul>
+</li>
+<li>数字证书机制
+<ul>
+<li>数字证书 + 公钥加密</li>
+<li>数字证书 + 数字签名</li>
+</ul>
+</li>
+</ul>
+<h2 id="五-hash函数">五、 Hash函数</h2>
+<p>Hash函数应用：1. 网站安全登录 ；2. 检测文件篡改</p>
+<p>Hash函数基本概念：</p>
+<ul>
+<li>定义：任意长度消息-&gt;固定长度的消息摘要</li>
+<li>单向性：找原像是困难的</li>
+<li>弱抗碰撞性：找第二原像是困难的</li>
+<li>强抗碰撞性：找碰撞是困难的</li>
+</ul>
+<p><strong>常见Hash函数：MD5、SHA-1</strong></p>
+<h3 id="51-md5">5.1【 MD5 】</h3>
+<ul>
+<li>消息分组长度：512bit</li>
+<li>输出长度：128bit</li>
+<li>消息预处理：填充，附加消息长度值</li>
+<li>MD5压缩函数：HMD5：{0,1}<sup>128+512</sup> —&gt; {0,1}<sup>128</sup></li>
+<li>MD5主循环：轮数 = 处理后的消息分组数</li>
+</ul>
+<h3 id="52-sha-1">5.2【 SHA-1 】</h3>
+<ul>
+<li>消息分组长度：512bit</li>
+<li>输出长度：160bit</li>
+<li>消息预处理：填充，附加消息长度值</li>
+<li>HSHA-1：{0,1}<sup>160+512</sup> —&gt; {0,1}<sup>160</sup></li>
+<li>MD5主循环：轮数 = 处理后的消息分组数</li>
+</ul>
+<h3 id="53-生日攻击">5.3 生日攻击</h3>
+<ul>
+<li>设Hash函数值为n比特</li>
+<li>若取 k = 2<sup>n</sup> + 1，则肯定能找到碰撞</li>
+<li>随机选取不同的消息，则只需要 k ≈ 2<sup>n/2</sup>，就能以超过50%的概率找到碰撞</li>
+<li>2<sup>n/2</sup> 相比2<sup>n</sup>小了很多，这种攻击方式称为生日攻击</li>
+</ul>
+
+                </div>
+            </article>
+        </div>
+
+        
+
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '',
+		appKey: '',
+		avatar: '',
+		pageSize: 5,
+		recordIp: false,
+		placeholder: 'Just Go Go',
+		visitor: false,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">这里是VIVI的博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://Viviairy.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
