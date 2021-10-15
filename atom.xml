@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Viviairy.github.io</id>
     <title>Viviairy</title>
-    <updated>2021-10-15T08:30:15.533Z</updated>
+    <updated>2021-10-15T08:55:17.317Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Viviairy.github.io"/>
     <link rel="self" href="https://Viviairy.github.io/atom.xml"/>
@@ -16,6 +16,13 @@
         <link href="https://Viviairy.github.io/zi-fu-bian-ma/">
         </link>
         <updated>2021-10-15T08:22:39.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[解决VMware Ubuntu20连不上网]]></title>
+        <id>https://Viviairy.github.io/jie-jue-vmware-ubuntu20-lian-bu-shang-wang/</id>
+        <link href="https://Viviairy.github.io/jie-jue-vmware-ubuntu20-lian-bu-shang-wang/">
+        </link>
+        <updated>2021-10-14T08:38:24.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Shell脚本快速入门]]></title>

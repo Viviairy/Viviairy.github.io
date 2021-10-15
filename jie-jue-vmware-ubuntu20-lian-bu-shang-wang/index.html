@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>玩转Linux指路 | Viviairy</title>
+<title>解决VMware Ubuntu20连不上网 | Viviairy</title>
 
 <link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1634288114760">
 
@@ -100,24 +100,39 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    玩转Linux指路
+                    解决VMware Ubuntu20连不上网
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2021-04-28 ·
+                        · 2021-10-14 ·
                     </time>
                     
                 </div>
                 <div class="post-content">
-                    <p>linux入门</p>
-<p>最近在研究linux，网上资源太多了，我挑出来一个目前为止我看到的最干货的教程和一个很好用的搜索工具，打算跟着这个系统学习一下linux系统，在这里记录一下。</p>
-<p>&gt;- <a href="http://linux.vbird.org/new_linux.php">鸟哥的linux私房菜</a></p>
-<p>&gt;感觉系统学习linux这个就够了，但是台湾翻译的问题有些表达会不太一样</p>
-<p>&gt;- <a href="https://wangchujiang.com/linux-command/">Linux命令在线搜索工具</a></p>
-<p>&gt;这个工具真的好用，能够搜索到Linux常见命令，以及语法，说明和一些实例，工具来自一个<a href="https://github.com/jaywcjlove/linux-command">github开源项目</a>，这个项目readme文档里面有超级多相关的学习资源。</p>
-<p>Linux 一般作为服务器使用，服务器一般放在机房，这时我们就需要远程登录到Linux服务器来管理维护系统。Linux 系统中是通过 ssh 服务实现的远程登录功能，默认 ssh 服务端口号为 22。可以在自己的电脑上通过XShell客户端远程控制。</p>
-<p>用XShell远程连接到linux系统，只能通过一个命令行界面控制，这就需要熟练使用linux基本的命令了</p>
-<p>暂且就是以上，持续更新中 (●'◡'●)/</p>
+                    <blockquote>
+<p>用虚拟机最讨厌的事情莫过于突然连不上往，晚上换了个wifi忽然又网络连接失败了，搞了一个多小时，记录一下，此方法亲测有效，缺点就是麻烦不能一劳永逸</p>
+</blockquote>
+<h4 id="步骤1vmware编辑-虚拟网络编辑器">步骤1：Vmware&lt;编辑&gt;-&lt;虚拟网络编辑器&gt;</h4>
+<p>1： 还原默认设置<br>
+2： 选择桥接模式<br>
+3： 桥接到本机正在使用的物理网卡</p>
+<h4 id="步骤2虚拟机设置-网络适配器">步骤2：虚拟机&lt;设置&gt;-&lt;网络适配器&gt;</h4>
+<p>1: 选中设置成桥接模式<br>
+2: 勾选复制物理网络连接</p>
+<h4 id="步骤3给虚拟机手动分配ipv4">步骤3：给虚拟机手动分配ipv4</h4>
+<p>1：本机cmd输入ipconfig /all查看主机ipv4信息<br>
+2：在Ubuntu中找到设置-网络，设置手动配置ip<br>
+- 地址前三段和本机一致，最后一位任意<br>
+- 子网掩码、网关、DNS均和本机一致</p>
+<h5 id="q什么是桥接模式bridged">Q：什么是桥接模式（bridged）</h5>
+<p>在bridged模式下，VMWare虚拟出来的操作系统就像是局域网中单独存在的“物理机”一样 ，虚拟机和宿主机在网络中处于同等地位，它可以访问局域网内任何一台机器。<br>
+需要手工为虚拟机配置IP地址（和宿主机器处于同一网段）、子网掩码、网关、DNS。来实现和宿主机进行通信以及访问互联网。<br>
+如果想利用VMWare在局域网内新建一个虚拟服务器，为局域网用户提供网络服务，就应该选择桥接模式。</p>
+<h5 id="q安装了虚拟机之后会多出两个虚拟网卡他们的主要作用">Q：安装了虚拟机之后会多出两个虚拟网卡他们的主要作用：</h5>
+<p>VMnet0：用于虚拟桥接网络下的虚拟交换机（未显示）<br>
+VMnet1：用于虚拟Host-Only网络下的虚拟交换机<br>
+VMnet8：用于虚拟NAT网络下的虚拟交换机</p>
+<p>参考链接：https://blog.csdn.net/weixin_43434136/article/details/116759692</p>
 
                 </div>
             </article>
@@ -126,8 +141,8 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://Viviairy.github.io/ji-wang-shu-li/" class="post-title gt-a-link">
-                    基础 | 计算机网络重点梳理
+                <a href="https://Viviairy.github.io/ru-he-xie-hao-yi-ge-shell-jiao-ben/" class="post-title gt-a-link">
+                    Shell脚本快速入门
                 </a>
             </div>
         
