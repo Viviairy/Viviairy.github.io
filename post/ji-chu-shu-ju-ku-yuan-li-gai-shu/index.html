@@ -1,0 +1,384 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>基础 | 数据库原理概述 | Viviairy</title>
+
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1634284604210">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<style>
+    hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Viviairy
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1634284604210"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    基础 | 数据库原理概述
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-12-28 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>数据库概述</p>
+<blockquote>
+<p>这篇博客将会带你系统地梳理一下数据库系统的基础知识，博客是按照高等教育出版社出版的《数据库系统概述（第5版）》这本教材梳理的。</p>
+</blockquote>
+<p>开始之前现先来理解一下最最基本的四个概念</p>
+<ul>
+<li><strong><strong>数据（Date）</strong></strong></li>
+</ul>
+<p>​    - 数据是描述事物的记录。数据和语义是不可分的，也就是说，给出数据的时候需要解释数据的意义，比如说小明某数据18，那这个18是代表年龄还是尺寸这得讲清楚。数据的形式可以是多种多样的，除了文字、数字还有图形、音频、视频等等，它们都可以经过数字化后存入计算机</p>
+<ul>
+<li><strong><strong>数据库（DateBase , DB）</strong></strong></li>
+</ul>
+<p>​    - 即为用于存储数据的仓库，是长期存储在计算机内、有组织、可共享的大量数据集合（这个也是数据库的基本特征）</p>
+<ul>
+<li><strong><strong>数据库管理系统（DateBase Management System,DBMS）</strong></strong></li>
+</ul>
+<p>​    - 位于用户和操作系统之间的一层数据管理软件。耳熟能详的有MySQL，SQL Server，Oracle等。</p>
+<ul>
+<li><strong><strong>数据库系统（DateBaseSystem,DBS）</strong></strong></li>
+</ul>
+<p>​    - 就是一个使用、管理、存储数据的系统，包括数据库、硬件、软件、人员</p>
+<figure data-type="image" tabindex="1"><img src="https://Viviairy.github.io/post-images/1620118877088.png" alt="" loading="lazy"></figure>
+<p>​    -  这里还涉及到数据库系统的三级模式结构和二级映射</p>
+<figure data-type="image" tabindex="2"><img src="https://Viviairy.github.io/post-images/1620139711329.png" alt="" loading="lazy"></figure>
+<blockquote>
+<p>构建数据库其实就是一个建模的过程。</p>
+</blockquote>
+<blockquote>
+<p>1）首先对现实世界进行分析，将客观对象抽象为某一信息结构（即<strong><strong>概念模型</strong></strong>）</p>
+</blockquote>
+<blockquote>
+<p>2）再把概念模型转换到计算机上某一数据库管理系统支持的<strong><strong>数据模型</strong></strong>。</p>
+</blockquote>
+<blockquote>
+<p>拿一个学校抽象出学生系统来，第一步，划分群体学生，第二步，建模</p>
+</blockquote>
+<h1 id="概念模型"><strong>概念模型</strong></h1>
+<p>所谓的概念模型就是从现实世界抽象出来的信息结构，</p>
+<p>这里最重要（其实是唯一实用）的就是<strong><strong>概念结构设计** **，也就是要画一个</strong></strong>E-R图****出来，</p>
+<p>E：Entity（实体），R：Relationship（关系），这两个对应的关系图</p>
+<p><strong><strong>首先理解什么是实体(Entity)</strong></strong>：</p>
+<ul>
+<li>
+<p>实体可以是具体的人或事物，也可以看作是一个概念。比如说”安妮“就是一个具体实体，”lol英雄“是一个概念实体。</p>
+</li>
+<li>
+<p>每个实体都会有很多的<strong><strong>属性（attribute）</strong></strong>，属性就是实体所具有的特性，一个实体可以用若干属性来刻画，比如lol英雄实体可以由名称、别称、性别、英雄定位、生命值、法力值等属性组合，这时属性集合（九尾狐妖，阿狸，女，法师，526，418）代表了这一个阿狸这一个lol英雄。</p>
+</li>
+<li>
+<p>可以唯一标识的属性集合叫做<strong><strong>码（key）</strong></strong>，唯一标识的意思呢就是说能让人准确认出来知道是哪个，一定要是唯一标识，举个例子，”名称“可以作为lol英雄实体的码，但是如果是HDU全体学生，就不能用姓名作为码，因为你认识的张三和我认识的张三可能根本不是一个人，只是重名而已，这时候就需要学号作为学生实体的码。</p>
+</li>
+<li>
+<p>这里还有两个拓展的概念，<strong><strong>实体型（entity type）</strong></strong>，就是实体名+属性名集合，例如：lol英雄（名称、性别、英雄定位、生命值、法力值）；而****实体集（entity set）****是指同一类型实体的集合，例如全体英雄。</p>
+</li>
+</ul>
+<p><strong><strong>什么是联系（relationship)</strong></strong></p>
+<ul>
+<li>
+<p>可以先理解现实世界中各个实体之间存在的关系</p>
+</li>
+<li>
+<p>实体之间的联系可以是一对一（比如正常情况的男女朋友交往），一对多（比如说lol账号和账号下拥有的lol英雄），多对多（比如玩家和游戏）</p>
+</li>
+</ul>
+<p>在抽象现实世界概念模型的时候通常用来标识实体关系，</p>
+<p>E-R图表示了实体型（矩形）、属性（椭圆）和联系（菱形），</p>
+<p>再看下面这个栗子就明白了</p>
+<figure data-type="image" tabindex="3"><img src="https://Viviairy.github.io/post-images/1620118890244.png" alt="" loading="lazy"></figure>
+<h1 id="关系模型"><strong>关系模型</strong></h1>
+<ul>
+<li>
+<p>首先理解数据模型的概念，所谓<strong><strong>数据模型</strong></strong>是数据库的核心和基础，是用来描述数据、组织数据和用来对数据进行操作的模型。数据模型所描述的内容包括三个部分：<strong>数据结构</strong>、<strong>数据操作</strong>、<strong>数据约束</strong>。</p>
+</li>
+<li>
+<p><strong><strong>关系模型是数据模型的一种</strong></strong>。 数据库常见的数据模型还有层次模型（树形结构）、网状模型等，这两种已经基本被淘汰不多做介绍。</p>
+</li>
+<li>
+<p>所谓<strong><strong>关系数据库</strong></strong>就是采用<strong><strong>关系模型</strong></strong>作为数据组织方式的数据库系统。</p>
+</li>
+</ul>
+<p>到底要怎么理解关系模型呢？</p>
+<p>简单来说就是：用表格就完事！</p>
+<p>没错，关系模式的数据结构只包含单一的数据结构——关系，在用户看来关系模式数据的逻辑结构是<strong><strong>一张扁平的二维表</strong></strong>。关系模型是建立在<strong><strong>集合代数</strong></strong>基础上的</p>
+<ul>
+<li>以下是关系模型涉及到的一些术语：</li>
+</ul>
+<ol>
+<li>关系（relation）</li>
+</ol>
+<p>​     - 一个关系对应通常说的一张表</p>
+<ol start="2">
+<li>属性（attribute）</li>
+</ol>
+<p>​    - 表中的一列，列名就是属性名</p>
+<p>​    - 相关的概念有主属性、非主属性</p>
+<ol start="3">
+<li>元组（tuple）</li>
+</ol>
+<p>​    - 表的某一行（即数据库中的每条记录），可以描述一个具体的事物</p>
+<ol start="4">
+<li>码 （key）</li>
+</ol>
+<p>​     - 候选码：</p>
+<p>​        如果一个属性组的值能唯一标识元组，其子集不能</p>
+<p>​    - 主码</p>
+<ol start="5">
+<li>域（domain）</li>
+</ol>
+<p>​     - 属性的取值范围来自某个域，比如性别的域一般来说就是（男，女）</p>
+<ol start="6">
+<li>分量：元组中的一个属性值</li>
+</ol>
+<h2 id="a-关系数据结构"><strong>A 关系数据结构</strong></h2>
+<h2 id="b-关系操作集合"><strong>B 关系操作集合</strong></h2>
+<p>基本关系操作包括<strong><strong>查询</strong></strong>和<strong><strong>增删改</strong></strong></p>
+<h3 id="1查询操作"><strong>1）查询操作</strong></h3>
+<p>基于关系代数查询操作分</p>
+<p><strong><strong>传统关系运算</strong></strong></p>
+<ol>
+<li>
+<p>并（union）</p>
+</li>
+<li>
+<p>差（excpet）</p>
+</li>
+<li>
+<p>交（intersection）</p>
+</li>
+<li>
+<p>笛卡尔积（cartesian product）</p>
+</li>
+</ol>
+<p><strong><strong>专门的关系运算</strong></strong></p>
+<ol>
+<li>选择（select）</li>
+</ol>
+<p>​     - 就是限制，针对元组，行运算</p>
+<ol start="2">
+<li>投影（projection）</li>
+</ol>
+<p>​     - 选择若干属性列组成新关系，列运算</p>
+<ol start="3">
+<li>连接（jion）</li>
+</ol>
+<p>​     - 从两个关系的笛卡尔积+选择</p>
+<ol start="4">
+<li>除运算（division）</li>
+</ol>
+<p>​     - 这是一个难点</p>
+<h3 id="2增删改操作"><strong>2）增删改操作</strong></h3>
+<p>关系操作涉及到的关系数据库标准语言SQL会下一篇博客详细介绍。</p>
+<h2 id="c-数据完整性约束"><strong>C 数据完整性约束</strong></h2>
+<p>数据完整性就是指数据的正确性和相容性（符合逻辑），又分为实体完整性、参照完整性、用户自定义完整性</p>
+<ol>
+<li>
+<p>实体完整性：</p>
+<p>主码唯一且不为空</p>
+</li>
+<li>
+<p>参照完整性：</p>
+<p>不允许引用不存在的实体。参照表插入某条记录，这条记录的外码在被参照表中必须存在</p>
+</li>
+<li>
+<p>用户自定义完整性：</p>
+<p>由用户自定义的数据约束。比如性别只能用男、女表示，人的年龄在0-120之间。常见的用户自定义完整性有NOT NULL，UNIQUE，CHECK等</p>
+</li>
+</ol>
+<p>#<strong>关系数据理论</strong></p>
+<h2 id="关于规范化"><strong>关于规范化</strong></h2>
+<p>这块是数据库的难点和也是重点，比较抽象，那就直接上个栗子理解吧</p>
+<p>函数依赖</p>
+<p>候选码:可唯一标识某一元组的属性组，属性组中各个属性缺一不可。【t_student】（学号，姓名，学院），姓名可能会重复，所以其中学号可以唯一标识一条记录，学号就是t_student的候选码。那么假设姓名不会重复，那么候选码就有学号和姓名两个。 又比如【t_grade】（学号，课程，成绩），其中一个学生可以有多条成绩记录，所以需要学号和课程号组合才可以唯一标识一条数据库记录，所以学号、课程号就是t_student的一个候选码。</p>
+<p>超码：只要一个属性组可以唯一标识一个元组，那么就说这个属性组是超码 【t_student】（学号，姓名，学院），姓名可能会重复，所以（学号）是一个超码同时也是候选码，（学号，姓名）可唯一标识一个元组，所以其也是超码，但不是候选码，因为少了姓名也可以唯一标识。</p>
+<p>主属性：候选码中的属性称为主属性。【t_student】（学号，姓名，学院），学号就是主属性</p>
+<p>非主属性：不是主属性就是非主属性呗。【t_student】（学号，姓名，学院），姓名、学院就是非主属性</p>
+<p>全码：极端情况下表的所有属性组成该表的候选码，则称为全码</p>
+<p>主键/主码：primary key，一个表可能有多个，往往选中一个作为主键</p>
+<p>外键/外码：foreign key，假设表A的某个属性attr是另一表B中的主码，且A和B有某种联系，则称attr是外码</p>
+<p>参照表：外码所在的表</p>
+<p>被参照表：外码所引用（foreign key references）的表</p>
+<h2 id="数据依赖公理系统"><strong>数据依赖公理系统</strong></h2>
+<h1 id="数据库恢复技术"><strong>数据库恢复技术</strong></h1>
+<p>事务的概念</p>
+<p>故障种类</p>
+<p>恢复技术</p>
+<p>数据转储</p>
+<p>登录日志</p>
+<h1 id="数据库并发控制"><strong>数据库并发控制</strong></h1>
+<p>封锁</p>
+<p>封锁协议</p>
+<p>并发控制</p>
+<p>暂且就是以上，持续更新中 (●'◡'●)/</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://Viviairy.github.io/post/mi-ma-xue-chong-dian-shu-li/" class="post-title gt-a-link">
+                    基础 | 密码学重点梳理
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '',
+		appKey: '',
+		avatar: '',
+		pageSize: 5,
+		recordIp: false,
+		placeholder: 'Just Go Go',
+		visitor: false,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">这里是VIVI的博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://Viviairy.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

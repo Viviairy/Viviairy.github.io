@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>归档 | Viviairy</title>
+<title>如何写好一个Shell脚本 | Viviairy</title>
 
 <link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1634284604210">
 
@@ -33,11 +33,11 @@
 <!--<script src="media/scripts/index.js"></script>-->
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -96,121 +96,109 @@
         }
     }
 </script>
-        <div class="post-container">
-            <div class="post-detail gt-bg-theme-color-first">
-                <article class="gt-post-content">
-                    <h2 class="post-title">归档</h2>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    如何写好一个Shell脚本
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-10-15 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>脚本，就是把重复枯燥无聊的工作自动化写的一个程序，</p>
+<p><a href="https://www.bilibili.com/video/BV1j541157Sr?p=2">shell视频教程</a></p>
+<h1 id="01-什么是shell">01 什么是shell</h1>
+<p>shell是一个用C语言编写的程序，便利用户和linux内核的沟通，是一种指令语言，解释性语言</p>
+<ul>
+<li>
+<p>用户：给内核下指令</p>
+</li>
+<li>
+<p>内核：接收指令，管理硬件、驱动硬件干活</p>
+</li>
+</ul>
+<p>问题是用户和内核之间语言不通，内核只认识二进制语言</p>
+<ul>
+<li>shell：就是个翻译</li>
+</ul>
+<h1 id="02-一个脚本的组成">02 一个脚本的组成</h1>
+<h4 id="1-脚本信息">(1) 脚本信息</h4>
+<pre><code class="language-shell">#Author: VIVI
+#Create Time:2021-10-14 22:45
+#Version:1.0
+#Script Description: for test
+</code></pre>
+<h4 id="2-解释环境">(2) 解释环境</h4>
+<p>用于定义脚本的执行环境，#! 是特例，用来找到解释器</p>
+<pre><code class="language-shell">#! /usr/bin/bash
+</code></pre>
+<pre><code class="language-shell">#! /usr/bin/env bash|python| perl
+</code></pre>
+<h4 id="3-脚本正文">(3) 脚本正文</h4>
+<p>组成就是代码和注释，为了避免出错不要有中文</p>
+<h1 id="03-shell的运行">03 shell的运行</h1>
+<h4 id="方法1直接执行">方法1：直接执行</h4>
+<pre><code class="language-shell">#前提是有rwx权限，那么才可以直接执行
+./路径/文件名.sh 
+</code></pre>
+<h4 id="方法2解释器运行">方法2：解释器运行</h4>
+<pre><code class="language-shell">chomd 644 文件名.sh #首先给定文件权限，rw-r-r
+ll  文件名.sh #可查看文件的权限
+</code></pre>
+<pre><code class="language-shell">bash 文件名.sh #执行方法1
+sh 文件名.sh #执行方法1
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://Viviairy.github.io/post/gmssl-shi-yong-or-mi-ma-suan-fa-jian-yan-xiang-jie/" class="post-title gt-a-link">
+                    基于GmSSL的密码算法检验详解
+                </a>
+            </div>
         
 
-<div class="archives-container">
-    
-        <h2 class="year gt-c-cotent-color-first">2021</h2>
         
-            
-                <article class="post">
-                    <a href="https://Viviairy.github.io/post/ru-he-xie-hao-yi-ge-shell-jiao-ben/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-10-15&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            如何写好一个Shell脚本
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://Viviairy.github.io/post/gmssl-shi-yong-or-mi-ma-suan-fa-jian-yan-xiang-jie/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-09-26&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            基于GmSSL的密码算法检验详解
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://Viviairy.github.io/post/zi-ding-yi-zhu-ti/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-08-17&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            划水 | 换上喜欢的主题
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://Viviairy.github.io/post/linux-zhi-lu/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-04-28&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            玩转Linux指路
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://Viviairy.github.io/post/ji-wang-shu-li/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-01-15&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            基础 | 计算机网络重点梳理
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-        
-            
-        
-    
-        <h2 class="year gt-c-cotent-color-first">2020</h2>
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <article class="post">
-                    <a href="https://Viviairy.github.io/post/ji-chu-shu-ju-ku-yuan-li-gai-shu/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-12-28&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            基础 | 数据库原理概述
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://Viviairy.github.io/post/mi-ma-xue-chong-dian-shu-li/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-06-24&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            基础 | 密码学重点梳理
-                        </div>
-                    </a>
-                </article>
-            
-        
-    
-</div>
 
-        <div class="pagination-container">
-    
-    
-</div>
+        
 
-    </article>
-</div>
-</div>
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '',
+		appKey: '',
+		avatar: '',
+		pageSize: 5,
+		recordIp: false,
+		placeholder: 'Just Go Go',
+		visitor: false,
+	});
+</script>
+
+        
+
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">这里是VIVI的博客</div>
     <div class="social-container">

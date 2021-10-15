@@ -4,9 +4,9 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>GmSSL使用 | 密码算法检验详解 | Viviairy</title>
+<title>基于GmSSL的密码算法检验详解 | Viviairy</title>
 
-<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1634017727451">
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1634284604210">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
@@ -77,7 +77,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1634017727451"
+            <form id="gridea-search-form" style="position: relative" data-update="1634284604210"
                 action="/search/">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
@@ -100,7 +100,7 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    GmSSL使用 | 密码算法检验详解
+                    基于GmSSL的密码算法检验详解
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
@@ -253,21 +253,21 @@ gmssl dgst -verify SM2PublicKey.pem -keyform PEM -sm3 -signature 0.sign 0.txt
 </code></pre>
 <figure data-type="image" tabindex="27"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924155836949.png" alt="image-20210924155836949" loading="lazy"></figure>
 <h5 id="3检测逻辑-5">(3)检测逻辑：</h5>
-<p>为了便于理解数字签名的用法，给出A-B双方通讯A向B发送数据的完整过程图；</p>
-<p>数字签名及其验证为红色方框内部分；</p>
-<figure data-type="image" tabindex="28"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924151022249.png" alt="image-20210924151022249" loading="lazy"></figure>
+<p>为了便于理解数字签名的用法，给出A-B双方通讯A向B发送数据的完整过程图；<br>
+数字签名及其验证为红色方框内部分<br>
+<img src="https://Viviairy.github.io/post-images/1634284124039.png" alt="" loading="lazy"></p>
 <h3 id="rsa签名">rsa签名</h3>
 <h5 id="1数字签名生成-2">(1)数字签名生成</h5>
 <pre><code class="language-shell"># 签名算法中的哈希采用sm3
 gmssl dgst -sign RSAPrivateKey1024.pem -keyform PEM -sm3 -out 0rsa.sign 0.txt
 </code></pre>
-<figure data-type="image" tabindex="29"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924160824091.png" alt="image-20210924160824091" loading="lazy"></figure>
-<figure data-type="image" tabindex="30"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924160903456.png" alt="image-20210924160903456" loading="lazy"></figure>
+<figure data-type="image" tabindex="28"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924160824091.png" alt="image-20210924160824091" loading="lazy"></figure>
+<figure data-type="image" tabindex="29"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924160903456.png" alt="image-20210924160903456" loading="lazy"></figure>
 <h5 id="2数字签名检验-2">(2)数字签名检验</h5>
 <pre><code class="language-shell"># 签名算法中的哈希采用sm3
 gmssl dgst -verify RSAPublicKey1024.pem -keyform PEM -sm3 -signature 0rsa.sign 0.txt 
 </code></pre>
-<figure data-type="image" tabindex="31"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924160841317.png" alt="image-20210924160841317" loading="lazy"></figure>
+<figure data-type="image" tabindex="30"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924160841317.png" alt="image-20210924160841317" loading="lazy"></figure>
 <h5 id="3检测逻辑-6">(3)检测逻辑：</h5>
 <p>sm2检测逻辑</p>
 <h2 id="gmssl用法说明">GmSSL用法说明</h2>
@@ -452,7 +452,7 @@ Valid options are:
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
                 <a href="https://Viviairy.github.io/post/zi-ding-yi-zhu-ti/" class="post-title gt-a-link">
-                    自定义: 换上喜欢的主题
+                    划水 | 换上喜欢的主题
                 </a>
             </div>
         
