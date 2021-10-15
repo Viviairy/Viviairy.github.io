@@ -6,7 +6,7 @@
 
 <title>基于GmSSL的密码算法检验详解 | Viviairy</title>
 
-<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1634284861792">
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1634285625825">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
@@ -77,7 +77,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1634284861792"
+            <form id="gridea-search-form" style="position: relative" data-update="1634285625825"
                 action="/search/">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
@@ -104,21 +104,20 @@
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2021-09-26 ·
+                        · 2021-09-24 ·
                     </time>
                     
                 </div>
                 <div class="post-content">
                     <blockquote>
-<p>vivi.feng 2021-9-24<br>
-工具：GmSSL<br>
+<p>工具：GmSSL<br>
 环境： win10 VS2019 perl5.26 NASM<br>
 windows安装gmssl：https://blog.csdn.net/zyhse/article/details/112325129<br>
 gmssl github地址：https://github.com/guanzhi/GmSSL</p>
 </blockquote>
-<h2 id="哈希算法检验">哈希算法检验</h2>
-<h3 id="sm3md5sha1sha256">SM3，MD5，SHA1，SHA256</h3>
-<h5 id="1-计算哈希命令行">(1) 计算哈希命令行：</h5>
+<p>#哈希算法检验</p>
+<h2 id="sm3md5sha1sha256">SM3，MD5，SHA1，SHA256</h2>
+<h4 id="1-计算哈希命令行">(1) 计算哈希命令行：</h4>
 <pre><code class="language-shell"># 进入gmssl后输入：
 sm3 1.txt
 md5 1.txt
@@ -128,21 +127,19 @@ sha256 1.txt
 # 如不进入,在命令前加上gmssl即可
 # gmssl所有相关的命令行同理
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924143951995.png" alt="image-20210924143951995" loading="lazy"></figure>
-<h5 id="2检测逻辑">(2)检测逻辑：</h5>
-<figure data-type="image" tabindex="2"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924100059732.png" alt="image-20210924100059732" loading="lazy"></figure>
-<h4 id="hmacmd5-hmacsha1hmacsha256">HmacMD5 ，HmacSHA1，HmacSHA256</h4>
-<h5 id="1计算哈希命令行">(1)计算哈希命令行：</h5>
+<h4 id="2检测逻辑">(2)检测逻辑：</h4>
+<figure data-type="image" tabindex="1"><img src="https://Viviairy.github.io/post-images/1634285154829.png" alt="" loading="lazy"></figure>
+<h3 id="hmacmd5-hmacsha1hmacsha256">HmacMD5 ，HmacSHA1，HmacSHA256</h3>
+<h4 id="1计算哈希命令行">(1)计算哈希命令行：</h4>
 <pre><code class="language-shell">#进入gmssl后输入：
 dgst -md5 -hmac KEY 1.txt
 dgst -sha1 -hmac KEY 1.txt
 dgst -sha256 -hmac KEY 1.txt
 # KEY为密钥， 1.txt为原文
 </code></pre>
-<figure data-type="image" tabindex="3"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924095747664.png" alt="image-20210924095747664" loading="lazy"></figure>
-<h5 id="2检测逻辑-2">(2)检测逻辑：</h5>
-<figure data-type="image" tabindex="4"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924100013047.png" alt="image-20210924100013047" loading="lazy"></figure>
-<h2 id="对称密码检验">对称密码检验</h2>
+<h4 id="2检测逻辑-2">(2)检测逻辑：</h4>
+<figure data-type="image" tabindex="2"><img src="https://Viviairy.github.io/post-images/1634285199467.png" alt="" loading="lazy"></figure>
+<h1 id="对称密码检验">对称密码检验</h1>
 <ul>
 <li>
 <p><strong>填充模式：</strong></p>
@@ -153,20 +150,16 @@ dgst -sha256 -hmac KEY 1.txt
 <p>是许多任务作模式中用于将加密随机化的一个位块，由此即使同样的明文被多次加密也会产生不同的密文，避免了较慢的重新产生密钥的过程。初始化向量与密钥相比有不同的安全性需求，因此IV通常无须保密，然而在大多数情况中，不应当在使用同一密钥的情况下两次使用同一个IV。对于CBC和CFB，重用IV会导致泄露明文首个块的某些信息，亦包括两个不同消息中相同的前缀。对于OFB和CTR而言，重用IV会导致完全失去安全性。另外，在CBC模式中，IV在加密时必须是无法预测的；</p>
 </li>
 </ul>
-<h3 id="sm4">sm4</h3>
-<h5 id="1-加密命令行">(1) 加密命令行：</h5>
+<h2 id="sm4">sm4</h2>
+<h4 id="1-加密命令行">(1) 加密命令行：</h4>
 <pre><code class="language-shell">#进入gmssl后输入：
 #加密模式ECB，无需IV参数
 enc -e  -sms4-ecb -in 1.txt -out sm4ecbenc.txt  -K 123456789 -p -nosalt 
 #加密模式CBC, 需要IV参数
 enc -e  -sms4-cbc -in 1.txt -out sm4cbcenc.txt  -K 123456789 -iv=987654321 -p -nosalt
 </code></pre>
-<figure data-type="image" tabindex="5"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924111757674.png" alt="image-20210924111757674" loading="lazy"></figure>
-<figure data-type="image" tabindex="6"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924111851887.png" alt="image-20210924111851887" loading="lazy"></figure>
-<h5 id="2-参数信息">(2) 参数信息：</h5>
-<figure data-type="image" tabindex="7"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924113635461.png" alt="image-20210924113635461" loading="lazy"></figure>
-<h5 id="3检测逻辑">(3)检测逻辑：</h5>
-<figure data-type="image" tabindex="8"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924110810886.png" alt="image-20210924110810886" loading="lazy"></figure>
+<p>(2)检测逻辑：</p>
+<figure data-type="image" tabindex="3"><img src="https://Viviairy.github.io/post-images/1634285291441.png" alt="" loading="lazy"></figure>
 <h3 id="aes">AES</h3>
 <h5 id="1-加密命令行-2">(1) 加密命令行：</h5>
 <pre><code class="language-shell">#进入gmssl后输入：
@@ -175,102 +168,82 @@ enc -e -aes-192-ecb -in 1.txt -out aes192ecbenc.txt -K 123456789 -p -nosalt
 # 算法AES,密钥长度128，加密模式cfb，需要iv
 enc -e -aes-128-cfb -in 1.txt -out aes128cfbenc.txt -K 123456789 -iv=987654321 -p -nosalt
 </code></pre>
-<figure data-type="image" tabindex="9"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924113052072.png" alt="image-20210924113052072" loading="lazy"></figure>
-<h5 id="2-参数信息-2">(2) 参数信息：</h5>
-<figure data-type="image" tabindex="10"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924113405046.png" alt="image-20210924113405046" loading="lazy"></figure>
-<h5 id="3检测逻辑-2">(3)检测逻辑：</h5>
-<figure data-type="image" tabindex="11"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924110955330.png" alt="image-20210924110955330" loading="lazy"></figure>
-<h2 id="公钥加密">公钥加密</h2>
-<p>公钥加密算法整理逻辑如图：</p>
-<figure data-type="image" tabindex="12"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924120255581.png" alt="image-20210924120255581" loading="lazy"></figure>
-<h3 id="sm2加解密">sm2加解密</h3>
-<h5 id="1私钥公钥的生成命令行">(1)私钥公钥的生成命令行：</h5>
+<h4 id="2检测逻辑-3">(2)检测逻辑：</h4>
+<figure data-type="image" tabindex="4"><img src="https://Viviairy.github.io/post-images/1634285336644.png" alt="" loading="lazy"></figure>
+<h1 id="公钥加密">公钥加密</h1>
+<p>公钥加密算法整理逻辑如图：<br>
+<img src="https://Viviairy.github.io/post-images/1634285414329.png" alt="" loading="lazy"></p>
+<h2 id="sm2加解密">sm2加解密</h2>
+<h4 id="1私钥公钥的生成命令行">(1)私钥公钥的生成命令行：</h4>
 <pre><code class="language-shell">#进入gmssl后输入：
 #手动生成私钥SM2PrivateKey.pem
 ecparam -genkey -name SM2 -out SM2PrivateKey.pem
 #通过私钥生成公钥SM2PublicKey.pem
 ec -in SM2PrivateKey.pem -pubout -out SM2PublicKey.pem
 </code></pre>
-<figure data-type="image" tabindex="13"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924121450390.png" alt="image-20210924121450390" loading="lazy"></figure>
-<figure data-type="image" tabindex="14"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924121511867.png" alt="image-20210924121511867" loading="lazy"></figure>
-<h5 id="2加解密命令行">(2)加解密命令行：</h5>
+<h4 id="2加解密命令行">(2)加解密命令行：</h4>
 <pre><code class="language-shell"># 通过公钥加密生成密文txt文件
 gmssl sm2utl -encrypt -in 1.txt -pubin -inkey SM2PublicKey.pem -out sm2enc.txt
 # 通过私钥对加密文文件进行解密
 gmssl sm2utl -decrypt -in sm2enc.txt -inkey SM2PrivateKey.pem -out sm2dec.txt
 </code></pre>
 <blockquote>
-<p><em><strong>注意！！！！</strong></em></p>
-<p><em>这里有个BUG，进入gmssl后输入命令加解密过程会出现报错</em><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924143013140.png" alt="image-20210924143013140" loading="lazy"></p>
-<p><em>直接在命令行带上gmssl输入的话就可以运行成功</em></p>
-<figure data-type="image" tabindex="15"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924143211982.png" alt="image-20210924143211982" loading="lazy"></figure>
-<figure data-type="image" tabindex="16"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924151605364.png" alt="image-20210924151605364" loading="lazy"></figure>
+<p><em><strong>注意！！！！</strong></em><br>
+<em>这里有个BUG，进入gmssl后输入命令加解密过程会出现报错</em><br>
+<em>直接在命令行带上gmssl输入的话就可以运行成功</em></p>
 </blockquote>
-<h5 id="3检测逻辑-3">(3)检测逻辑：</h5>
-<figure data-type="image" tabindex="17"><img src="D:%5CViviairy%5Cpost-images%5Cgmssl%5Cimage-20210924125134641.png" alt="image-20210924125134641" loading="lazy"></figure>
-<h3 id="rsa加解密">RSA加解密</h3>
-<h5 id="1私钥公钥的生成命令行-2">(1)私钥公钥的生成命令行：</h5>
+<h4 id="3检测逻辑">(3)检测逻辑：</h4>
+<figure data-type="image" tabindex="5"><img src="https://Viviairy.github.io/post-images/1634285400800.png" alt="" loading="lazy"></figure>
+<h2 id="rsa加解密">RSA加解密</h2>
+<h4 id="1私钥公钥的生成命令行-2">(1)私钥公钥的生成命令行：</h4>
 <pre><code class="language-shell">#手动生成私钥RSAPrivateKey.pem
 gmssl genrsa -out RSAPrivateKey.pem
 #通过私钥生成公钥RSAPublicKey.pem
 gmssl rsa -in RSAPrivateKey.pem -pubout -out RSAPublicKey.pem
 </code></pre>
-<figure data-type="image" tabindex="18"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924130449767.png" alt="image-20210924130449767" loading="lazy"></figure>
-<figure data-type="image" tabindex="19"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924130517032.png" alt="image-20210924130517032" loading="lazy"></figure>
 <blockquote>
-<p><em><strong>注意！！</strong></em></p>
-<p><em>生成的密钥默认长度是2048bit，在后面加上1024即可生成1024bit密钥</em></p>
-<figure data-type="image" tabindex="20"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924153328004.png" alt="image-20210924153328004" loading="lazy"></figure>
-<figure data-type="image" tabindex="21"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924153955240.png" alt="image-20210924153955240" loading="lazy"></figure>
+<p><em><strong>注意！！</strong></em><br>
+<em>生成的密钥默认长度是2048bit，在后面加上1024即可生成1024bit密钥</em></p>
 </blockquote>
-<h5 id="2加解密命令行-2">(2)加解密命令行：</h5>
+<h4 id="2加解密命令行-2">(2)加解密命令行：</h4>
 <pre><code class="language-shell"># 通过公钥加密生成密文txt文件
 gmssl rsautl -encrypt -in 0.txt -inkey RSAPublicKey1024.pem -pubin -out rsaenc.txt
 # 通过私钥对加密文文件进行解密
 gmssl rsautl -decrypt -in rsaenc.txt -inkey RSAPrivateKey1024.pem -out rsadec.txt
 </code></pre>
-<figure data-type="image" tabindex="22"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924154531864.png" alt="image-20210924154531864" loading="lazy"></figure>
-<figure data-type="image" tabindex="23"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924154556196.png" alt="image-20210924154556196" loading="lazy"></figure>
 <blockquote>
-<p><em><strong>注意！！！！</strong></em></p>
-<p><em>这里又有个坑，容易出现因为加密内容超长抛出异常，非对称加密的原文长度是有限制的，因为cpu消耗比较高，在实际应用 设计的时候都是用来加密 哈希值 或者 会话密码 之类的</em>。</p>
-<p><em>不注意长度的话，就可以看到如下这种报错了</em></p>
-<figure data-type="image" tabindex="24"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924153109295.png" alt="image-20210924153109295" loading="lazy"></figure>
+<p><em><strong>注意！！！！</strong></em><br>
+<em>这里又有个坑，容易出现因为加密内容超长抛出异常，非对称加密的原文长度是有限制的，因为cpu消耗比较高，在实际应用 设计的时候都是用来加密 哈希值 或者 会话密码 之类的</em>。<br>
+<em>不注意长度的话，就可以看到报错了</em></p>
 </blockquote>
-<h5 id="3检测逻辑-4">(3)检测逻辑：</h5>
+<h4 id="3检测逻辑-2">(3)检测逻辑：</h4>
 <p>同sm2</p>
-<h2 id="数字签名">数字签名</h2>
-<h3 id="sm2签名">sm2签名</h3>
-<h5 id="1数字签名生成">(1)数字签名生成</h5>
+<h1 id="数字签名">数字签名</h1>
+<h2 id="sm2签名">sm2签名</h2>
+<h4 id="1数字签名生成">(1)数字签名生成</h4>
 <pre><code class="language-shell"># 签名算法中的哈希采用sm3
 gmssl dgst -sign SM2PrivateKey.pem -keyform PEM -sm3 -out 0.sign 0.txt
 </code></pre>
-<figure data-type="image" tabindex="25"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924155749701.png" alt="image-20210924155749701" loading="lazy"></figure>
-<figure data-type="image" tabindex="26"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924155807036.png" alt="image-20210924155807036" loading="lazy"></figure>
-<h5 id="2数字签名检验">(2)数字签名检验</h5>
+<h4 id="2数字签名检验">(2)数字签名检验</h4>
 <pre><code class="language-shell"># 签名算法中的哈希采用sm3
 gmssl dgst -verify SM2PublicKey.pem -keyform PEM -sm3 -signature 0.sign 0.txt 
 </code></pre>
-<figure data-type="image" tabindex="27"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924155836949.png" alt="image-20210924155836949" loading="lazy"></figure>
-<h5 id="3检测逻辑-5">(3)检测逻辑：</h5>
+<h4 id="3检测逻辑-3">(3)检测逻辑：</h4>
 <p>为了便于理解数字签名的用法，给出A-B双方通讯A向B发送数据的完整过程图；<br>
 数字签名及其验证为红色方框内部分<br>
 <img src="https://Viviairy.github.io/post-images/1634284124039.png" alt="" loading="lazy"></p>
-<h3 id="rsa签名">rsa签名</h3>
-<h5 id="1数字签名生成-2">(1)数字签名生成</h5>
+<h2 id="rsa签名">rsa签名</h2>
+<h4 id="1数字签名生成-2">(1)数字签名生成</h4>
 <pre><code class="language-shell"># 签名算法中的哈希采用sm3
 gmssl dgst -sign RSAPrivateKey1024.pem -keyform PEM -sm3 -out 0rsa.sign 0.txt
 </code></pre>
-<figure data-type="image" tabindex="28"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924160824091.png" alt="image-20210924160824091" loading="lazy"></figure>
-<figure data-type="image" tabindex="29"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924160903456.png" alt="image-20210924160903456" loading="lazy"></figure>
-<h5 id="2数字签名检验-2">(2)数字签名检验</h5>
+<h4 id="2数字签名检验-2">(2)数字签名检验</h4>
 <pre><code class="language-shell"># 签名算法中的哈希采用sm3
 gmssl dgst -verify RSAPublicKey1024.pem -keyform PEM -sm3 -signature 0rsa.sign 0.txt 
 </code></pre>
-<figure data-type="image" tabindex="30"><img src="C:%5CUsers%5C76354%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210924160841317.png" alt="image-20210924160841317" loading="lazy"></figure>
-<h5 id="3检测逻辑-6">(3)检测逻辑：</h5>
+<h4 id="3检测逻辑-4">(3)检测逻辑：</h4>
 <p>sm2检测逻辑</p>
-<h2 id="gmssl用法说明">GmSSL用法说明</h2>
+<h1 id="gmssl用法说明">GmSSL用法说明</h1>
 <pre><code class="language-shell"># GmSSL&gt; help
 Standard commands
 asn1parse         ca                ciphers           cms
