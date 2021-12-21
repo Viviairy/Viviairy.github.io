@@ -6,7 +6,7 @@
 
 <title>踩坑 | 理解字符编码与乱码 | Viviairy</title>
 
-<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1640051827268">
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1640051923287">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
@@ -77,7 +77,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1640051827268"
+            <form id="gridea-search-form" style="position: relative" data-update="1640051923287"
                 action="/search/">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
@@ -110,7 +110,7 @@
                 </div>
                 <div class="post-content">
                     <!-- more -->
-<p>最近踩到的坑是解析文件到输入框出现字符乱码问题，发现自己一直忽视了字符编码格式的问题。</p>
+<p>最近踩到的坑是解析文件到输入框出现字符乱码问题，发现自己一直忽视了字符编码格式的问题。理解了一些，但还是没有搞明白，之后在看吧...</p>
 <p>首先明确一点，<em><strong>计算机屏幕显示和计算机内部存储是两码事，不管是文本还是图片视频，计算机存储里面只有0、1</strong></em> 。为了便于组合划分，引入了字节的概念，1个字节(byte)8个位(bit)，可以表示2^8即256个数字。</p>
 <h3 id="00-编码初衷">00 编码初衷</h3>
 <p>之所以需要编码，就是因为计算机和人类语言不通，计算机只认得的二进制对人类来说，阅读难度太大，人类更擅长识别文字，双方都没办法妥协，为了便于和机器沟通，我们需要就需要翻译：</p>
