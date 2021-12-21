@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>划水 | 换上喜欢的主题 | Viviairy</title>
+<title>自学笔记 | 整理常用linux指令 | Viviairy</title>
 
 <link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1640051827268">
 
@@ -100,39 +100,54 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    划水 | 换上喜欢的主题
+                    自学笔记 | 整理常用linux指令
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2021-08-17 ·
+                        · 2021-04-28 ·
                     </time>
-                    
-                        <a href="https://Viviairy.github.io/tag/VYDKY2xGq/" class="post-tags">
-                            # 划水
-                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <!-- more -->
-<blockquote>
-<p>划水混一篇，不过心情确实会变好！！</p>
-</blockquote>
-<h1 id="win10-cmd">win10 CMD</h1>
-<p>打开cmd窗口，点击窗口上沿，打开&lt;属性&gt;，自定义颜色透明度即可，<a href="https://www.sojson.com/rgb.html">传送门:RGB颜色参考</a><br>
-<img src="https://Viviairy.github.io/post-images/1629184046601.png" alt="" loading="lazy"></p>
-<h1 id="microsoft-edge">Microsoft Edge</h1>
-<p><img src="https://Viviairy.github.io/post-images/1629185314312.png" alt="" loading="lazy"><br>
-接下来我们要改掉讨人厌的新建页面，通过界面内右上角&lt;设置&gt;，页面布局改为自定义,将&lt;页面内容&gt;改为&lt;关闭&gt;，即可彻底关掉下面冗余的链接和烦人的广告<br>
-<img src="https://Viviairy.github.io/post-images/1629184299665.png" alt="" loading="lazy"><br>
-<img src="https://Viviairy.github.io/post-images/1629184344170.png" alt="" loading="lazy"></p>
-<h1 id="vs-code">VS Code</h1>
-<p>文件-首选项-颜色主题<br>
-<img src="https://Viviairy.github.io/post-images/1629184260238.png" alt="" loading="lazy"></p>
-<h1 id="notepad">notepad++</h1>
-<p>在菜单栏点击&lt;设置&gt;-&lt;语言格式格式&gt;更换主题即可<br>
-<img src="https://Viviairy.github.io/post-images/1629184037224.png" alt="" loading="lazy"><br>
-<img src="https://Viviairy.github.io/post-images/1629184014214.png" alt="" loading="lazy"><br>
-<img src="https://Viviairy.github.io/post-images/1629184022360.png" alt="" loading="lazy"></p>
+                    <p>linux入门</p>
+<p>最近在研究linux，网上资源太多了，我挑出来一个目前为止我看到的最干货的教程和一个很好用的搜索工具，打算跟着这个系统学习一下linux系统，在这里记录一下。</p>
+<p>&gt;- <a href="http://linux.vbird.org/new_linux.php">鸟哥的linux私房菜</a></p>
+<p>&gt;感觉系统学习linux这个就够了，但是台湾翻译的问题有些表达会不太一样</p>
+<p>&gt;- <a href="https://wangchujiang.com/linux-command/">Linux命令在线搜索工具</a></p>
+<p>&gt;这个工具真的好用，能够搜索到Linux常见命令，以及语法，说明和一些实例，工具来自一个<a href="https://github.com/jaywcjlove/linux-command">github开源项目</a>，这个项目readme文档里面有超级多相关的学习资源。</p>
+<p>Linux 一般作为服务器使用，服务器一般放在机房，这时我们就需要远程登录到Linux服务器来管理维护系统。Linux 系统中是通过 ssh 服务实现的远程登录功能，默认 ssh 服务端口号为 22。可以在自己的电脑上通过XShell客户端远程控制。</p>
+<p>用XShell远程连接到linux系统，只能通过一个命令行界面控制，这就需要熟练使用linux基本的命令了</p>
+<h2 id="便捷操作">便捷操作</h2>
+<pre><code class="language-shell">cd ~ #回到根目录
+cd - #回到上次所在目录
+
+!! #查看上次输入的指令以及结果
+！p #查询最近一次以p开头的指令信息
+history #查看所有历史指令
+
+cat /etc/passwd #查看所有系统用户
+cat /etc/passwd | grep &quot;fvivi&quot; #检索条件
+
+echo xxx #输出xxx
+echo $? #查询上条指令是否执行成功，0成功
+
+ifconfig -a #查询ip信息
+
+</code></pre>
+<h2 id="文件操作">文件操作</h2>
+<pre><code class="language-shell">vim 文件名 #创建、编辑文件
+gedit 文件名 #更好用的创建、编辑文件
+rm 文件名 #删除文件
+
+cat 文件名 #查看文件内容
+wc 文件名 #查询文件基本信息
+
+chomd 644 文件名 #change mode首先给定文件权限，rw-r-r
+ll  文件名 #可查看文件的权限
+
+ls -l 文件名 #查询是否存在某文件
+</code></pre>
+<p>暂且就是以上，持续更新中 (●'◡'●)/</p>
 
                 </div>
             </article>
@@ -141,8 +156,8 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://Viviairy.github.io/linux-zhi-ing/" class="post-title gt-a-link">
-                    自学笔记 | 整理常用linux指令
+                <a href="https://Viviairy.github.io/wiresharkpython-hui-zhi-san-ci-wo-shou/" class="post-title gt-a-link">
+                    实验 | Python绘制Wireshark报文三次握手
                 </a>
             </div>
         

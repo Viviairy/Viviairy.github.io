@@ -4,9 +4,9 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Shell脚本快速入门 | Viviairy</title>
+<title>自学笔记 | Shell脚本快速入门 | Viviairy</title>
 
-<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1634288408861">
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1640051827268">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
@@ -77,7 +77,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1634288408861"
+            <form id="gridea-search-form" style="position: relative" data-update="1640051827268"
                 action="/search/">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
@@ -100,7 +100,7 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Shell脚本快速入门
+                    自学笔记 | Shell脚本快速入门
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
@@ -153,6 +153,76 @@ ll  文件名.sh #可查看文件的权限
 <pre><code class="language-shell">bash 文件名.sh #执行方法1
 sh 文件名.sh #执行方法1
 </code></pre>
+<h1 id="04-基础概念">04 基础概念</h1>
+<h2 id="管道">管道</h2>
+<h2 id="重定向">重定向</h2>
+<pre><code class="language-shell">指令 &gt; 文件名 #将内容写入文件
+指令 &gt;&gt; 文件名 #追加内容写入文件
+
+某条指令 &amp;&gt;/dev/null #重定向指令输出到无底洞，即不显示输出
+
+#以自动为磁盘挂载分区为例子
+fdisk /dev/loop10&lt; EOF #开始
+X #系列输入值1
+X #系列输入值2
+X #系列输入值3
+EOF #结束
+</code></pre>
+<h3 id="数学运算">数学运算</h3>
+<pre><code class="language-shell">echo $((里面输入公式)) #最简单的
+
+expr 10 + 10 #加，需要空格分割，加、减、除法同理
+expr 20 \* 2 #乘，*为特殊字符，反斜杠（\）转义
+expr \( 10 + 10 \) \* 2 + 100 #四则运算
+
+let sum=10+10 #结果存在sum中，不显示
+echo $sum #回显sum值
+</code></pre>
+<p>但是上面的哪些只支持正整数计算麻烦有鸡肋，建议直接用bc命令进入计算器</p>
+<h2 id="echo输出">echo输出</h2>
+<pre><code class="language-shell">#echo调用工具
+#在echo中执行命令的话只要用写在``里面就可以
+
+#step1，第一个echo用来填充运算结果
+echo &quot;scale=2;100/3&quot;|bc 
+#step2，第二个用来补充说明输出
+echo &quot;100除以3约等于 `echo &quot;scale=2;100/3&quot;|bc` %&quot;
+</code></pre>
+<pre><code>exit NUM #取值0-255,可用于报错
+echo $? #即可查看指令执行状况
+</code></pre>
+<h4 id="格式化输出">格式化输出</h4>
+<pre><code class="language-shell">echo -n #输出不换行
+echo -e #输出转义字符
+
+\n #换行
+\t #制表符
+\a #鸣响
+\b #删除前一个字符
+</code></pre>
+<h4 id="倒计时的例子">倒计时的例子</h4>
+<pre><code class="language-shell">#!/usr/bin/bash
+for time in ‘seq 9 -1 0’;do
+	echo -e &quot;-b$time&quot;
+	sleep 1
+done
+echo
+</code></pre>
+<h2 id="read输入">read输入</h2>
+<pre><code class="language-shell">echo -n &quot;输入你的密码:&quot;
+read  pw #键盘输入值存入pw中
+
+echo &quot;你的密码是：$pw&quot; #即可调用打印密码值
+</code></pre>
+<p>获取用户输入可以直接写成一句</p>
+<pre><code class="language-shell">read -p &quot;输入密码:&quot; pw
+
+#read命令选项
+-p #打印信息
+-s #不回显
+-t60 #限制时间60s
+-n6 #限制字符个数6位
+</code></pre>
 
                 </div>
             </article>
@@ -162,7 +232,7 @@ sh 文件名.sh #执行方法1
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
                 <a href="https://Viviairy.github.io/gmssl-shi-yong-or-mi-ma-suan-fa-jian-yan-xiang-jie/" class="post-title gt-a-link">
-                    基于GmSSL的密码算法检验
+                    开源工具 | 基于GmSSL的密码算法检验
                 </a>
             </div>
         

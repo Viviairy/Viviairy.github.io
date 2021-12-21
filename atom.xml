@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Viviairy.github.io</id>
     <title>Viviairy</title>
-    <updated>2021-10-15T09:00:15.606Z</updated>
+    <updated>2021-12-21T01:57:14.350Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Viviairy.github.io"/>
     <link rel="self" href="https://Viviairy.github.io/atom.xml"/>
@@ -11,28 +11,35 @@
     <icon>https://Viviairy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Viviairy</rights>
     <entry>
-        <title type="html"><![CDATA[理解字符编码与乱码]]></title>
+        <title type="html"><![CDATA[自学笔记 | Spring Boot+Vue前后端分离]]></title>
+        <id>https://Viviairy.github.io/b-zhan-ke-cheng-or-spring-bootvue-qian-hou-duan-fen-chi/</id>
+        <link href="https://Viviairy.github.io/b-zhan-ke-cheng-or-spring-bootvue-qian-hou-duan-fen-chi/">
+        </link>
+        <updated>2021-12-21T01:37:23.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[踩坑 | 理解字符编码与乱码]]></title>
         <id>https://Viviairy.github.io/zi-fu-bian-ma/</id>
         <link href="https://Viviairy.github.io/zi-fu-bian-ma/">
         </link>
         <updated>2021-10-15T08:22:39.000Z</updated>
     </entry>
     <entry>
-        <title type="html"><![CDATA[解决VMware Ubuntu20连不上网]]></title>
+        <title type="html"><![CDATA[踩坑 | 解决VMware Ubuntu20连不上网]]></title>
         <id>https://Viviairy.github.io/jie-jue-vmware-ubuntu20-lian-bu-shang-wang/</id>
         <link href="https://Viviairy.github.io/jie-jue-vmware-ubuntu20-lian-bu-shang-wang/">
         </link>
         <updated>2021-10-14T08:38:24.000Z</updated>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Shell脚本快速入门]]></title>
+        <title type="html"><![CDATA[自学笔记 | Shell脚本快速入门]]></title>
         <id>https://Viviairy.github.io/ru-he-xie-hao-yi-ge-shell-jiao-ben/</id>
         <link href="https://Viviairy.github.io/ru-he-xie-hao-yi-ge-shell-jiao-ben/">
         </link>
         <updated>2021-10-13T07:50:25.000Z</updated>
     </entry>
     <entry>
-        <title type="html"><![CDATA[基于GmSSL的密码算法检验]]></title>
+        <title type="html"><![CDATA[开源工具 | 基于GmSSL的密码算法检验]]></title>
         <id>https://Viviairy.github.io/gmssl-shi-yong-or-mi-ma-suan-fa-jian-yan-xiang-jie/</id>
         <link href="https://Viviairy.github.io/gmssl-shi-yong-or-mi-ma-suan-fa-jian-yan-xiang-jie/">
         </link>
@@ -46,28 +53,35 @@
         <updated>2021-08-17T06:16:18.000Z</updated>
     </entry>
     <entry>
-        <title type="html"><![CDATA[玩转Linux指路]]></title>
-        <id>https://Viviairy.github.io/linux-zhi-lu/</id>
-        <link href="https://Viviairy.github.io/linux-zhi-lu/">
+        <title type="html"><![CDATA[自学笔记 | 整理常用linux指令]]></title>
+        <id>https://Viviairy.github.io/linux-zhi-ing/</id>
+        <link href="https://Viviairy.github.io/linux-zhi-ing/">
         </link>
         <updated>2021-04-28T07:30:44.000Z</updated>
     </entry>
     <entry>
-        <title type="html"><![CDATA[基础 | 计算机网络重点梳理]]></title>
+        <title type="html"><![CDATA[实验 | Python绘制Wireshark报文三次握手]]></title>
+        <id>https://Viviairy.github.io/wiresharkpython-hui-zhi-san-ci-wo-shou/</id>
+        <link href="https://Viviairy.github.io/wiresharkpython-hui-zhi-san-ci-wo-shou/">
+        </link>
+        <updated>2021-01-19T09:12:16.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[理论基础 | 计算机网络重点梳理]]></title>
         <id>https://Viviairy.github.io/ji-wang-shu-li/</id>
         <link href="https://Viviairy.github.io/ji-wang-shu-li/">
         </link>
         <updated>2021-01-15T09:03:33.000Z</updated>
     </entry>
     <entry>
-        <title type="html"><![CDATA[基础 | 数据库原理概述]]></title>
+        <title type="html"><![CDATA[理论基础 | 数据库原理概述]]></title>
         <id>https://Viviairy.github.io/ji-chu-shu-ju-ku-yuan-li-gai-shu/</id>
         <link href="https://Viviairy.github.io/ji-chu-shu-ju-ku-yuan-li-gai-shu/">
         </link>
         <updated>2020-12-28T07:51:39.000Z</updated>
     </entry>
     <entry>
-        <title type="html"><![CDATA[基础 | 密码学重点梳理]]></title>
+        <title type="html"><![CDATA[理论基础 | 密码学重点梳理]]></title>
         <id>https://Viviairy.github.io/mi-ma-xue-chong-dian-shu-li/</id>
         <link href="https://Viviairy.github.io/mi-ma-xue-chong-dian-shu-li/">
         </link>

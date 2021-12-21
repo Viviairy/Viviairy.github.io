@@ -4,9 +4,9 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>基于GmSSL的密码算法检验 | Viviairy</title>
+<title>开源工具 | 基于GmSSL的密码算法检验 | Viviairy</title>
 
-<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1634288408861">
+<link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1640051827268">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Viviairy.github.io/styles/main.css">
@@ -77,7 +77,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1634288408861"
+            <form id="gridea-search-form" style="position: relative" data-update="1640051827268"
                 action="/search/">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
@@ -100,7 +100,7 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    基于GmSSL的密码算法检验
+                    开源工具 | 基于GmSSL的密码算法检验
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
@@ -115,8 +115,8 @@
 windows安装gmssl：https://blog.csdn.net/zyhse/article/details/112325129<br>
 gmssl github地址：https://github.com/guanzhi/GmSSL</p>
 </blockquote>
-<p>#哈希算法检验</p>
-<h2 id="sm3md5sha1sha256">SM3，MD5，SHA1，SHA256</h2>
+<h1 id="1-哈希算法检验">1 哈希算法检验</h1>
+<h3 id="11-sm3md5sha1sha256">1.1 SM3，MD5，SHA1，SHA256</h3>
 <h4 id="1-计算哈希命令行">(1) 计算哈希命令行：</h4>
 <pre><code class="language-shell"># 进入gmssl后输入：
 sm3 1.txt
@@ -129,7 +129,7 @@ sha256 1.txt
 </code></pre>
 <h4 id="2检测逻辑">(2)检测逻辑：</h4>
 <figure data-type="image" tabindex="1"><img src="https://Viviairy.github.io/post-images/1634285154829.png" alt="" loading="lazy"></figure>
-<h3 id="hmacmd5-hmacsha1hmacsha256">HmacMD5 ，HmacSHA1，HmacSHA256</h3>
+<h3 id="12-hmacmd5-hmacsha1hmacsha256">1.2 HmacMD5 ，HmacSHA1，HmacSHA256</h3>
 <h4 id="1计算哈希命令行">(1)计算哈希命令行：</h4>
 <pre><code class="language-shell">#进入gmssl后输入：
 dgst -md5 -hmac KEY 1.txt
@@ -139,7 +139,7 @@ dgst -sha256 -hmac KEY 1.txt
 </code></pre>
 <h4 id="2检测逻辑-2">(2)检测逻辑：</h4>
 <figure data-type="image" tabindex="2"><img src="https://Viviairy.github.io/post-images/1634285199467.png" alt="" loading="lazy"></figure>
-<h1 id="对称密码检验">对称密码检验</h1>
+<h1 id="2-对称密码检验">2 对称密码检验</h1>
 <ul>
 <li>
 <p><strong>填充模式：</strong></p>
@@ -150,7 +150,7 @@ dgst -sha256 -hmac KEY 1.txt
 <p>是许多任务作模式中用于将加密随机化的一个位块，由此即使同样的明文被多次加密也会产生不同的密文，避免了较慢的重新产生密钥的过程。初始化向量与密钥相比有不同的安全性需求，因此IV通常无须保密，然而在大多数情况中，不应当在使用同一密钥的情况下两次使用同一个IV。对于CBC和CFB，重用IV会导致泄露明文首个块的某些信息，亦包括两个不同消息中相同的前缀。对于OFB和CTR而言，重用IV会导致完全失去安全性。另外，在CBC模式中，IV在加密时必须是无法预测的；</p>
 </li>
 </ul>
-<h2 id="sm4">sm4</h2>
+<h3 id="21-sm4">2.1 sm4</h3>
 <h4 id="1-加密命令行">(1) 加密命令行：</h4>
 <pre><code class="language-shell">#进入gmssl后输入：
 #加密模式ECB，无需IV参数
@@ -160,7 +160,7 @@ enc -e  -sms4-cbc -in 1.txt -out sm4cbcenc.txt  -K 123456789 -iv=987654321 -p -n
 </code></pre>
 <p>(2)检测逻辑：</p>
 <figure data-type="image" tabindex="3"><img src="https://Viviairy.github.io/post-images/1634285291441.png" alt="" loading="lazy"></figure>
-<h3 id="aes">AES</h3>
+<h3 id="22-aes">2.2 AES</h3>
 <h5 id="1-加密命令行-2">(1) 加密命令行：</h5>
 <pre><code class="language-shell">#进入gmssl后输入：
 # 算法AES,密钥长度192，加密模式ecb,无需iv
@@ -170,10 +170,10 @@ enc -e -aes-128-cfb -in 1.txt -out aes128cfbenc.txt -K 123456789 -iv=987654321 -
 </code></pre>
 <h4 id="2检测逻辑-3">(2)检测逻辑：</h4>
 <figure data-type="image" tabindex="4"><img src="https://Viviairy.github.io/post-images/1634285336644.png" alt="" loading="lazy"></figure>
-<h1 id="公钥加密">公钥加密</h1>
+<h1 id="3-公钥加密">3 公钥加密</h1>
 <p>公钥加密算法整理逻辑如图：<br>
 <img src="https://Viviairy.github.io/post-images/1634285414329.png" alt="" loading="lazy"></p>
-<h2 id="sm2加解密">sm2加解密</h2>
+<h3 id="31-sm2加解密">3.1 sm2加解密</h3>
 <h4 id="1私钥公钥的生成命令行">(1)私钥公钥的生成命令行：</h4>
 <pre><code class="language-shell">#进入gmssl后输入：
 #手动生成私钥SM2PrivateKey.pem
@@ -194,7 +194,7 @@ gmssl sm2utl -decrypt -in sm2enc.txt -inkey SM2PrivateKey.pem -out sm2dec.txt
 </blockquote>
 <h4 id="3检测逻辑">(3)检测逻辑：</h4>
 <figure data-type="image" tabindex="5"><img src="https://Viviairy.github.io/post-images/1634285400800.png" alt="" loading="lazy"></figure>
-<h2 id="rsa加解密">RSA加解密</h2>
+<h3 id="32-rsa加解密">3.2 RSA加解密</h3>
 <h4 id="1私钥公钥的生成命令行-2">(1)私钥公钥的生成命令行：</h4>
 <pre><code class="language-shell">#手动生成私钥RSAPrivateKey.pem
 gmssl genrsa -out RSAPrivateKey.pem
@@ -218,8 +218,8 @@ gmssl rsautl -decrypt -in rsaenc.txt -inkey RSAPrivateKey1024.pem -out rsadec.tx
 </blockquote>
 <h4 id="3检测逻辑-2">(3)检测逻辑：</h4>
 <p>同sm2</p>
-<h1 id="数字签名">数字签名</h1>
-<h2 id="sm2签名">sm2签名</h2>
+<h1 id="4-数字签名验签">4 数字签名验签</h1>
+<h3 id="41-sm2签名">4.1 sm2签名</h3>
 <h4 id="1数字签名生成">(1)数字签名生成</h4>
 <pre><code class="language-shell"># 签名算法中的哈希采用sm3
 gmssl dgst -sign SM2PrivateKey.pem -keyform PEM -sm3 -out 0.sign 0.txt
@@ -232,7 +232,7 @@ gmssl dgst -verify SM2PublicKey.pem -keyform PEM -sm3 -signature 0.sign 0.txt
 <p>为了便于理解数字签名的用法，给出A-B双方通讯A向B发送数据的完整过程图；<br>
 数字签名及其验证为红色方框内部分<br>
 <img src="https://Viviairy.github.io/post-images/1634284124039.png" alt="" loading="lazy"></p>
-<h2 id="rsa签名">rsa签名</h2>
+<h3 id="42-rsa签名">4.2 rsa签名</h3>
 <h4 id="1数字签名生成-2">(1)数字签名生成</h4>
 <pre><code class="language-shell"># 签名算法中的哈希采用sm3
 gmssl dgst -sign RSAPrivateKey1024.pem -keyform PEM -sm3 -out 0rsa.sign 0.txt

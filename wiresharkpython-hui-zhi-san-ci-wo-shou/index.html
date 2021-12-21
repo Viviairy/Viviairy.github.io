@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>划水 | 换上喜欢的主题 | Viviairy</title>
+<title>实验 | Python绘制Wireshark报文三次握手 | Viviairy</title>
 
 <link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1640051827268">
 
@@ -100,39 +100,94 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    划水 | 换上喜欢的主题
+                    实验 | Python绘制Wireshark报文三次握手
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2021-08-17 ·
+                        · 2021-01-19 ·
                     </time>
-                    
-                        <a href="https://Viviairy.github.io/tag/VYDKY2xGq/" class="post-tags">
-                            # 划水
-                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <!-- more -->
-<blockquote>
-<p>划水混一篇，不过心情确实会变好！！</p>
+                    <blockquote>
+<p>python网络编程课的一个小作业</p>
 </blockquote>
-<h1 id="win10-cmd">win10 CMD</h1>
-<p>打开cmd窗口，点击窗口上沿，打开&lt;属性&gt;，自定义颜色透明度即可，<a href="https://www.sojson.com/rgb.html">传送门:RGB颜色参考</a><br>
-<img src="https://Viviairy.github.io/post-images/1629184046601.png" alt="" loading="lazy"></p>
-<h1 id="microsoft-edge">Microsoft Edge</h1>
-<p><img src="https://Viviairy.github.io/post-images/1629185314312.png" alt="" loading="lazy"><br>
-接下来我们要改掉讨人厌的新建页面，通过界面内右上角&lt;设置&gt;，页面布局改为自定义,将&lt;页面内容&gt;改为&lt;关闭&gt;，即可彻底关掉下面冗余的链接和烦人的广告<br>
-<img src="https://Viviairy.github.io/post-images/1629184299665.png" alt="" loading="lazy"><br>
-<img src="https://Viviairy.github.io/post-images/1629184344170.png" alt="" loading="lazy"></p>
-<h1 id="vs-code">VS Code</h1>
-<p>文件-首选项-颜色主题<br>
-<img src="https://Viviairy.github.io/post-images/1629184260238.png" alt="" loading="lazy"></p>
-<h1 id="notepad">notepad++</h1>
-<p>在菜单栏点击&lt;设置&gt;-&lt;语言格式格式&gt;更换主题即可<br>
-<img src="https://Viviairy.github.io/post-images/1629184037224.png" alt="" loading="lazy"><br>
-<img src="https://Viviairy.github.io/post-images/1629184014214.png" alt="" loading="lazy"><br>
-<img src="https://Viviairy.github.io/post-images/1629184022360.png" alt="" loading="lazy"></p>
+<h4 id="题目说明">题目说明：</h4>
+<p>打开Wireshark，在联网的网卡上开始抓包过程，再用浏览器打开链接，关闭网页并结束抓包过程，然后将抓包内容保存为pcapng格式的文件。<br>
+对上述pcapng文件，使用Scapy库或其他解析库，获取到tcp三报文连接或tcp四报文释放的信息，获取到相关信息后，再用Matplot库绘制三报文连接的过程。</p>
+<h4 id="所选python库介绍">所选Python库介绍</h4>
+<ul>
+<li>Scapy:<br>
+Scrapy 是用 Python 实现的一个为了爬取网站数据、提取结构性数据而编写的应用框架。</li>
+<li>Matplotlib<br>
+Matplotlib 是一个 Python 的 2D绘图库</li>
+</ul>
+<h4 id="程序源代码">程序源代码</h4>
+<pre><code>from scapy.all import *
+import matplotlib.pyplot as plt
+
+pcap_path = &quot;D:/tcp2.pcapng&quot;
+packets = rdpcap(pcap_path) # 读取数据包
+
+# 设置figure大小
+plt.figure(figsize=(10,8))
+# 隐藏边框
+plt.gca().spines[&quot;top&quot;].set_alpha(.0)
+plt.gca().spines[&quot;bottom&quot;].set_alpha(.0)
+plt.gca().spines[&quot;right&quot;].set_alpha(.0)
+plt.gca().spines[&quot;left&quot;].set_alpha(.0)
+# 添加标题
+plt.title(&quot;TCP connection&quot;, fontsize=18)
+# 横纵坐标范围
+plt.axis([0,10,0,10])
+# 添加横坐标标签
+plt.xticks([1,9],[packets[0][&quot;IP&quot;].src, packets[0][&quot;IP&quot;].dst])
+# 隐藏纵坐标标签
+plt.yticks([])
+# 两条竖线
+plt.vlines(x=1, ymin=0, ymax=10, linestyles='dotted')
+plt.vlines(x=9, ymin=0, ymax=10, linestyles='dotted')
+# 添加文字
+plt.text(1, 10, 'Client', horizontalalignment='center', fontsize=15)
+plt.text(9, 10, 'Server', horizontalalignment='center', fontsize=15)
+
+client_ip = packets[0][&quot;IP&quot;].src
+# 对每一个数据包的数据进行处理
+for i in range(len(packets)):
+    if packets[i][&quot;IP&quot;].src == client_ip:
+        # 如果是从客户端发往服务器
+        p1=[1,9-2*i]
+        p2=[9,9-2*i-1]
+    else:
+        # 如果是从服务器发往客户端
+        p1=[9,9-2*i]
+        p2=[1,9-2*i-1]
+    # 画一条带箭头的线
+    plt.arrow(p1[0],p1[1],p2[0]-p1[0],p2[1]-p1[1],
+        length_includes_head=True, # 长度包含箭头部分
+        head_width=0.2,head_length=0.2,color='purple') # 箭头的长宽和颜色
+    # 添加数据信息
+    message = 'sport='+str(packets[i][&quot;TCP&quot;].sport)+','+'dport='+str(packets[i][&quot;TCP&quot;].dport)+','+'seq='+str(packets[i][&quot;TCP&quot;].seq)+','+'ack='+str(packets[i][&quot;TCP&quot;].ack)+','+'flags='+str(packets[i][&quot;TCP&quot;].flags)
+    plt.text(5, p1[1], message, horizontalalignment='center', fontsize=10)
+
+plt.show()
+</code></pre>
+<h4 id="程序测试方法及测试结果记录">程序测试方法及测试结果记录</h4>
+<ol>
+<li>测试方法<br>
+首先查询本机ip以及访问的目标网址对应的ip</li>
+</ol>
+<p>根据ip过滤数据包，再筛选出tcp三次握手的报文如下，另存文件为tcp. pcapng<br>
+下图中前三个数据包即为TCP建立连接三次握手过程，第四个包才是http的，http使用TCP建立连接成功。</p>
+<p>下面逐步分析三次握手过程<br>
+第一次握手：客户端向服务器发送连接请求包，标志位SYN（同步序号）置为1，序号为X=0</p>
+<p>第二次握手：服务器收到客户端发过来报文，由SYN=1知道客户端要求建立联机。向客户端发送一个SYN和ACK都置为1的TCP报文，设置初始序号Y=0，将确认序号设置为客户的序列号加1，即X+1 = 0+1=1</p>
+<p>第三次握手： 客户端收到服务器发来的包后检查确认序号是否正确，即第一次发送的序号加1（X+1=1）。以及标志位ACK是否为1。若正确，客户端再次发送确认包，ACK标志位为1，SYN标志位为0。确认序号(Acknowledgement Number)=Y+1=0+1=1，发送序号为X+1=1。服务器收到后确认序号值与ACK=1则连接建立成功，可以传送数据了。</p>
+<ol start="2">
+<li>测试流程<br>
+运行代码可以看见三次握手建立连接的过程</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://Viviairy.github.io/post-images/1634289943397.png" alt="" loading="lazy"></figure>
 
                 </div>
             </article>
@@ -141,8 +196,8 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://Viviairy.github.io/linux-zhi-ing/" class="post-title gt-a-link">
-                    自学笔记 | 整理常用linux指令
+                <a href="https://Viviairy.github.io/ji-wang-shu-li/" class="post-title gt-a-link">
+                    理论基础 | 计算机网络重点梳理
                 </a>
             </div>
         
