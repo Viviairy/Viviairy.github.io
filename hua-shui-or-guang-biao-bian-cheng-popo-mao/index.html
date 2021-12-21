@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>踩坑 | 理解字符编码与乱码 | Viviairy</title>
+<title>划水 | 光标变成POPO猫 | Viviairy</title>
 
 <link rel="shortcut icon" href="https://Viviairy.github.io/favicon.ico?v=1640073932556">
 
@@ -100,34 +100,19 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    踩坑 | 理解字符编码与乱码
+                    划水 | 光标变成POPO猫
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2021-10-15 ·
+                        · 2021-12-21 ·
                     </time>
                     
                 </div>
                 <div class="post-content">
-                    <!-- more -->
-<p>最近踩到的坑是解析文件到输入框出现字符乱码问题，发现自己一直忽视了字符编码格式的问题。理解了一些，但还是没有搞明白，之后在看吧...</p>
-<p>首先明确一点，<em><strong>计算机屏幕显示和计算机内部存储是两码事，不管是文本还是图片视频，计算机存储里面只有0、1</strong></em> 。为了便于组合划分，引入了字节的概念，1个字节(byte)8个位(bit)，可以表示2^8即256个数字。</p>
-<h3 id="00-编码初衷">00 编码初衷</h3>
-<p>之所以需要编码，就是因为计算机和人类语言不通，计算机只认得的二进制对人类来说，阅读难度太大，人类更擅长识别文字，双方都没办法妥协，为了便于和机器沟通，我们需要就需要翻译：</p>
-<blockquote>
-<p>首先，需要人为地确定一套翻译的规则，这套规则里面需要明确人能认识的字符和计算机认识的二进制之间要怎么对应。所谓编码，就是从文字映射到0、1的过程；解码，就是反过来从0、1映射到文字的过程。</p>
-</blockquote>
-<h3 id="01-字符编码类型">01 字符编码类型</h3>
-<p>这对于使用英语或者某些西欧洲语言的国家来说已经很够用了，最初诞生的ASCII ((American Standard Code for Information Interchange): 美国信息交换标准代码）甚至只有128个字符。</p>
-<p>用来表示其他语言，尤其是像中、日和韩的象形文字，有成千上万独立的字符，很显然就不能满足需求了。每个国家都研制的编码后期很难统一，那干脆就把将世界当成一个整体，把所有的文字统一编号，unicode编码应运而生。<br>
-还有GB2312、GBK、GB18030、UTF-8。</p>
-<h3 id="02-乱码现象">02 乱码现象</h3>
-<p>编码方式多了就容易出现乱码。再强调一遍，乱码只是翻译显示的问题，也就是说，只有人才知道乱码﹐计算机只认识0、1在它看来这并不是问题。</p>
-<p>不同编码之间真正的区别在于存储结构。同样的文本字符，经过不同的编码，会翻译成不同的字节流，在存储结构上是不一样的。反过来，相同的字节流经过不同的方式解码会有不同的结果展示，但是其内存上结构上并没有改变。</p>
-<h3 id="03乱码的原因">03乱码的原因</h3>
-<p>出现乱码的原因就是文本字符编码过程与字节流解码过程使用了不同的编码格式，这个往往归咎于解码格式选择错误。如果我的字符是用utf-8编码，你用GBK解码那肯定出问题。因为文字按照utf-8的编码规则编成的0、1，按照GBK的规则解码回来的文字并不是原来 的文字，这时候就会出现乱码了。这种问题会出现在文件读写、网络编码传输、数据库存取上。只要牵涉到字符都有可能出现乱码，因为只要有字符就会有解码过程。</p>
-<p>还有一种 情况就是文件压根不是文本文件，也就是说根本就没有经过编码这个过程，那你去解码当然乱码了。比如64，你如果看做文本字符就是6和4两个字符，可以对应 编码格式进行编码。如果看做是数字64，那对应的存储结构是0100 0000，就没有编码过程也就不需要去解码。</p>
-<p>参考链接：https://blog.csdn.net/Alexshi5/article/details/79513018</p>
+                    <p>推荐宝藏网站！！https://custom-cursor.com/en<br>
+首页拖到底下 install for Windows<br>
+下载安装好Custom Cursor软件之后<br>
+在网页选喜欢的光标 ADD就 ok啦</p>
 
                 </div>
             </article>
@@ -136,8 +121,8 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://Viviairy.github.io/jie-jue-vmware-ubuntu20-lian-bu-shang-wang/" class="post-title gt-a-link">
-                    踩坑 | 解决VMware Ubuntu20连不上网
+                <a href="https://Viviairy.github.io/b-zhan-ke-cheng-or-spring-bootvue-qian-hou-duan-fen-chi/" class="post-title gt-a-link">
+                    自学笔记 | Spring Boot+Vue前后端分离
                 </a>
             </div>
         

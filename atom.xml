@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Viviairy.github.io</id>
     <title>Viviairy</title>
-    <updated>2021-12-21T02:06:11.596Z</updated>
+    <updated>2021-12-21T08:05:41.138Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Viviairy.github.io"/>
     <link rel="self" href="https://Viviairy.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://Viviairy.github.io/images/avatar.png</logo>
     <icon>https://Viviairy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Viviairy</rights>
+    <entry>
+        <title type="html"><![CDATA[划水 | 光标变成POPO猫]]></title>
+        <id>https://Viviairy.github.io/hua-shui-or-guang-biao-bian-cheng-popo-mao/</id>
+        <link href="https://Viviairy.github.io/hua-shui-or-guang-biao-bian-cheng-popo-mao/">
+        </link>
+        <updated>2021-12-21T02:45:28.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[自学笔记 | Spring Boot+Vue前后端分离]]></title>
         <id>https://Viviairy.github.io/b-zhan-ke-cheng-or-spring-bootvue-qian-hou-duan-fen-chi/</id>
